@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<section id="show-section">
+    <div class="container">
+        <div class="heading">
+            <h1><%= asset.name%></h1>
+        </div>
+
+        <div class="image" style="background-image:url('<%=asset.image%>'); height: 450px;"></div>
+
+        <div style="margin-top:50px;" class="row">
+            <div class="col-12 col-md-6 offset-md-1 info">
+                <h3 style="margin-bottom: 20px;"><%= asset.description%></h3>
+                <p style="text-align: left;">Nam a ultrices mauris. Nam efficitur, lorem a vehicula interdum, ligula velit euismod lorem, vitae vehicula ligula tortor eu leo. Maecenas porttitor massa ut vestibulum euismod. Aliquam eget mi aliquam.</p>
+                <p style="text-align: left;">Lorem ipsum dapibus dolor non, malesuada mauris. Aliquam eleifend mauris non odio mattis auctor. Aenean sit amet elementum tellus, a facilisis ligula. Pellentesque ac vehicula mauris.</p>
+            </div>
+            <div style="padding:45;" class="col-12 col-md-3 offset-md-1 meta">
+                <div class="tags">
+                    <span class="meta-heading">Token:</span>
+                    <a href="#">NLT</a>
+                    <p href="#">$0.1</p>
+                    <span class="meta-heading">Available Tokens:</span>
+                    <p>78%</p>
+                    <span class="meta-heading">Location:</span>
+                    <p><%=asset.location%></p>
+                </div>
+            </div>  
+        </div>
+        <div style="justify-content:left;">
+            <a style="justify-content:left; text-align: left;" href="#" class="btn btn-lg btn-primary">Add To Cart</a>
+        </div>
+    </div>
+</section>
+
+<% include partials/footer %>

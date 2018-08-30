@@ -14,8 +14,11 @@
                        
                 <div class="col-sm-6 col-lg-4 item">
                     <img class="img-fluid" src="<%= asset.image %>" />
-                    <h3 class="name"><%= asset.name%></h3>
+                    <h3 class="name"><%= asset.name%></h3>  
                     <p class="description"><%= asset.description%></p>
+                    <p>
+                        <a class="btn btn-primary" href="/asset/<%=asset._id%>">More Info</a>
+                    </p>
                 </div>
             
                 <% }); %>
