@@ -1,14 +1,32 @@
 <% include partials/header %>
-<h1>Create new asset</h1>
-<form action="/assets" method="post">
-    <input type="text" name="name" placeholder="Asset Name">
-    <input type="text" name="type" placeholder="Asset Type">
-    <input type="text" name="location" placeholder="Asset Location">
-    <input type="text" name="description" placeholder="Asset Description">
-    <input type="text" name="image" placeholder="Asset Image">
-    <button type="submit">Submit</button>
-</form>
 
-<a href="/asset">Return to Assets</a>
+<div  id="form-container" style="justify-content: center;" class="container">
+        <h1>Create new asset</h1>
+    <div class="row" style="justify-content: center;">
+        <div class="col-lg-6" >
+            <form action="/assets" method="post">
+                <div class="form-group">
+                    <input id="name" class="form-control" type="text" name="name" placeholder="Asset Name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="type" placeholder="Asset Type">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="location" placeholder="Asset Location">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="description" placeholder="Asset Description">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="image" placeholder="Asset Image">
+                </div>
+                <div class="form-group">
+                    <button class="form-control btn-dark" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
 
 <% include partials/footer %>

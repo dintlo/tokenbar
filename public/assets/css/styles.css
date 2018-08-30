@@ -87,4 +87,22 @@ question-container .p {
 #question-section hr {
   width:30%;
 }
+img {
+  vertical-align:middle;
+  border-style:none;
+}
+
+.img-fluid {
+  width:100%;
+  height:50%;
+}
+
+#form-container.container {
+  text-align: center;
+  justify-content: center;
+  margin-top:50px;
+  padding-top:25px;
+}
+
+
 

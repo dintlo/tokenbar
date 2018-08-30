@@ -1,12 +1,26 @@
 <% include partials/header %>
 
 <h1>This is the assets page.</h1>
-<a href="/assets/new">Add a new asset</a>
-<% assets.forEach(function(asset){ %>
-    <div>
-        <h4><%= asset.name %></h4>
-        <img src="<%= asset.image %>">
-    </div> 
-<% }); %>
+
+<div class="projects-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Assets</h2>
+                <p class="text-center">Browse through our hundreds of Assets which have been tokenized.</p>
+            </div>
+            <div class="row projects">
+
+                <% assets.forEach(function(asset){ %>
+                       
+                <div class="col-sm-6 col-lg-4 item">
+                    <img class="img-fluid" src="<%= asset.image %>" />
+                    <h3 class="name"><%= asset.name%></h3>
+                    <p class="description"><%= asset.description%></p>
+                </div>
+            
+                <% }); %>
+            </div>
+        </div>
+    </div>
 
 <% include partials/footer %>
