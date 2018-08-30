@@ -1,6 +1,22 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
+var express     = require("express"),
+    app         = express(),
+    bodyParser  = require("body-parser"),
+    mongoose    = require("mongoose");
+ 
+
+mongoose.connect("mongodb://localhost/tokenbar");
+
+//Schema setup
+
+var assetSchema = mongoose.Schema({
+    name: String,
+    type: String,
+    description: String,
+    location: String,
+    image: String
+});
+
+var Asset = mongoose.model("Asset", assetSchema);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -32,13 +48,24 @@ app.get("/", function(req, res){
 
 app.get("/assets", function(req, res){
     
-
-    res.render("assets", {assets:assets});
+    Asset.find({}, function(err, assets){
+        if(err){
+            console.log(err);
+        } else {
+            res.render("assets", {assets:assets});
+        }
+    })
 })
 
 app.post("/assets", function(req, res){
-    assets.push({name: req.body.name, type: req.body.type, location: req.body.location, description:req.body.description, image: req.body.image});
-    res.redirect("/assets");
+    var newAsset = {name: req.body.name, type: req.body.type, location: req.body.location, description:req.body.description, image: req.body.image};
+    Asset.create(newAsset, function(err, newlyAsset){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect("/assets");
+        }
+    })
 });
 
 app.get("/assets/new", function(req, res){
