@@ -45,6 +45,10 @@ app.get("/assets/new", function(req, res){
     res.render("new");
 })
 
+app.get("/about", function(req, res){
+    res.render("about");
+})
+
 app.listen(3005, function(){
     console.log("Tokenbar server has started!!!")
 })
