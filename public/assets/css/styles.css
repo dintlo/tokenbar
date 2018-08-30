@@ -1,0 +1,90 @@
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  text-align:center;
+  color:#fff;
+  background-repeat:no-repeat;
+  background-attachment:scroll;
+  background-position:50%;
+  background-size:cover;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+}
+
+body {
+}
+
+header.masterhead {
+  position:relative;
+  overflow:hidden;
+  padding-top:calc(7rem + 72px);
+  padding-bottom:7rem;
+  background:linear-gradient(0deg,#ff6a00,#ee0979);
+  background-repeat:no-repeat;
+  background-position:50%;
+  background-attachment:scroll;
+  background-size:cover;
+}
+
+header.masterhead {
+  padding-top:calc(10rem + 55px);
+  padding-bottom:10rem;
+}
+
+.masthead.text-center.text-white {
+  padding-top:calc(10rem + 55px);
+  padding-bottom:10rem;
+}
+
+.masthead.text-center.text-white {
+  position:relative;
+  overflow:hidden;
+  padding-top:calc(7rem + 72px);
+  padding-bottom:7rem;
+  background:linear-gradient(0deg,#343a40,#343a40);
+  background-repeat:no-repeat;
+  background-position:50%;
+  background-attachment:scroll;
+  background-size:cover;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  margin-top:50px;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  color:#343a40;
+}
+
+question-section .container {
+  padding-top:25px;
+}
+
+question-container hr {
+  width:30%;
+}
+
+welcome-heading .h2, h2 {
+  text-align:center;
+}
+
+welcome-heading .h4, h4 {
+  text-align:center;
+}
+
+#question-section {
+  background-color:#ffffff;
+}
+
+question-container .p {
+  color:#fff;
+}
+
+#question-container {
+  color:#343a40;
+  padding:25px;
+}
+
+#question-section hr {
+  width:30%;
+}
+
