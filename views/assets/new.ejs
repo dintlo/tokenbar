@@ -1,31 +1,36 @@
 <% include ../partials/header %>
 
-<div  id="form-container" style="justify-content: center;" class="container">
-        <h1>Create new asset</h1>
-    <div class="row" style="justify-content: center;">
-        <div class="col-lg-6" >
+<div  id="form-container" class="container">
+        <h1 style="margin:25px;">Create new asset</h1>
+    
+        <div class="col-12 col-md-6" style="margin:auto; text-align: left;" >
             <form action="/assets" method="post">
                 <div class="form-group">
+                    <label for="name">Asset Name</label>
                     <input id="name" class="form-control" type="text" name="name" placeholder="Asset Name">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="type" placeholder="Asset Type">
+                    <label for="type">Asset Type</label>
+                    <input class="form-control" id="type" type="text" name="type" placeholder="Asset Type">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="location" placeholder="Asset Location">
+                    <label for="location">Country</label>
+                    <input class="form-control" id="location" type="text" name="location" placeholder="Asset Location">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="description" placeholder="Asset Description">
+                    <label for="description">Asset Name</label>
+                    <textarea rows="5" class="form-control" id="description" name="description" placeholder="Asset Description"></textarea>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="Asset Image">
+                    <label for="image">Image Url</label>
+                    <input class="form-control" id="image" type="text" name="image" placeholder="Asset Image">
                 </div>
                 <div class="form-group">
                     <button class="form-control btn-dark" type="submit">Submit</button>
                 </div>
             </form>
         </div>
-    </div>
+    
 
 </div>
 

@@ -2,37 +2,47 @@
 
 <section id="show-section">
     <div class="container">
-        <div class="heading">
-            <h1><%= asset.name%></h1>
-        </div>
-
-        <div class="image" style="background-image:url('<%=asset.image%>'); height: 450px;"></div>
-
-        <div style="margin-top:50px;" class="row">
-            <div class="col-12 col-md-6 offset-md-1 info">
-                <h3 style="margin-bottom: 20px;"><%= asset.description%></h3>
-                <p style="text-align: left;">Nam a ultrices mauris. Nam efficitur, lorem a vehicula interdum, ligula velit euismod lorem, vitae vehicula ligula tortor eu leo. Maecenas porttitor massa ut vestibulum euismod. Aliquam eget mi aliquam.</p>
-                <p style="text-align: left;">Lorem ipsum dapibus dolor non, malesuada mauris. Aliquam eleifend mauris non odio mattis auctor. Aenean sit amet elementum tellus, a facilisis ligula. Pellentesque ac vehicula mauris.</p>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="heading">
+                    <h1><%= asset.name%></h1>
+                </div>
+            
+                <div class="image" style="background-image:url('<%=asset.image%>'); height: 450px; background-position: center; background-size: fit; background-repeat: no-repeat;"></div>
+            
+                <div style="margin-top:50px;">
+                    
+                    <h3 style="margin-bottom: 20px;"><%= asset.description%></h3>
+                    <p style="text-align: left;">Nam a ultrices mauris. Nam efficitur, lorem a vehicula interdum, ligula velit euismod lorem, vitae vehicula ligula tortor eu leo. Maecenas porttitor massa ut vestibulum euismod. Aliquam eget mi aliquam.</p>
+                    <p style="text-align: left;">Lorem ipsum dapibus dolor non, malesuada mauris. Aliquam eleifend mauris non odio mattis auctor. Aenean sit amet elementum tellus, a facilisis ligula. Pellentesque ac vehicula mauris.</p>
+                </div>
             </div>
-            <div style="padding:45;" class="col-12 col-md-3 offset-md-1 meta">
-                <div class="tags">
-                    <span class="meta-heading"><b>Token:</b></span>
-                    <span><%=asset.token%></span>
-                    <p><%=asset.tokenPrice%></p>
-                    <span class="meta-heading"><b>Available Tokens:</b></span>  
-                    <p><%=asset.tokenAvail%></p>
-                    <span class="meta-heading"><b>Location:</b></span>  
-                    <p><%=asset.location%></p>
-                    <span class="meta-heading"><b>Wallet Information:</b></span>  
-                    <span><%=asset.wallet.token%></span>
-                    <span><%=asset.wallet.balance%></span>
-                    <p><%=asset.wallet.publicKey%></p>
+            <div style="text-align: left; margin-left: 130px; margin-top:60px;" class="col-12 col-md-3 tags">
+
+               
+                <span class="meta-heading"><b>Token:</b></span>
+                <span><%=asset.token%></span>
+                <p><%=asset.tokenPrice%></p>
+                <span class="meta-heading"><b>Available Tokens:</b></span>  
+                <p><%=asset.tokenAvail%></p>
+                <span class="meta-heading"><b>Location:</b></span>  
+                <p><%=asset.location%></p>
+                <span class="meta-heading"><b>Wallet Information:</b></span>  
+                <span><%=asset.wallet.token%></span>
+                <span><%=asset.wallet.balance%></span>
+                <p><%=asset.wallet.publicKey%></p>
+                
+                <div style="justify-content:left;">
+                    <a style="justify-content:left; text-align: left;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-success">Purchase</a>
                 </div>
             </div>  
         </div>
-        <div style="justify-content:left;">
-            <a style="justify-content:left; text-align: left;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-primary">Purchase</a>
+       
+
+       
+            
         </div>
+       
     </div>
 </section>
 

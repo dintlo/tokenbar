@@ -104,7 +104,13 @@ img {
   padding-top:25px;
 }
 
-#about-container.container {
+#about-container.container, #form-container.container {
+  text-align: center;
+  justify-content: center;
+  margin-top:50px;
+  padding-top:25px;
+}
+#form-container .container {
   text-align: center;
   justify-content: center;
   margin-top:50px;
