@@ -1,22 +1,12 @@
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose");
- 
-
+    mongoose    = require("mongoose"),
+    Asset       = require("./models/assets"),
+    seedDB      = require("./seed.js");
+    
+seedDB();
 mongoose.connect("mongodb://localhost/tokenbar");
-
-//Schema setup
-
-var assetSchema = mongoose.Schema({
-    name: String,
-    type: String,
-    description: String,
-    location: String,
-    image: String
-});
-
-var Asset = mongoose.model("Asset", assetSchema);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
