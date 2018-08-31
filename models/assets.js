@@ -12,6 +12,22 @@ var assetSchema = mongoose.Schema({
     tokenAvail: Number,
     token: String,
     tokenPrice: Number,
+    transactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Transaction"
+        }
+    ],
+    wallet : {
+        id:{
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Wallet"
+        },
+        token: String,
+        balance: String,
+        publicKey: Number,
+        privateKey: Number,
+    },
 });
 
 module.exports = mongoose.model("Asset", assetSchema);

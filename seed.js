@@ -1,5 +1,7 @@
 var mongoose    = require("mongoose"),
-    Asset       = require("./models/assets")
+    Asset       = require("./models/assets"),
+    Transaction = require("./models/transaction"),
+    Wallet      = require("./models/wallet")
 
 var assetData = [
     {name:"The Rondebosch Estate", 
@@ -44,7 +46,24 @@ function seedDB(){
                 if(err){
                     console.log(err);
                 } else {
-                    console.log("Created an  Assets in the database.")
+                    console.log("Created an  Assets in the database.");
+                     //Create a wallet for the asset
+                    var wallet ={
+                        token: "NLT",
+                        balance: 0,
+                        publicKey: "1212121212",
+                        privateKey: "212121212",
+                    }
+                   
+                    Wallet.create(wallet, function(err, newWallet){
+                        if(err){
+                            console.log(err);
+                        } else {
+                            newAsset.wallet = newWallet;
+                            newAsset.save();
+                            console.log("A new wallet has been created.");
+                        }
+                    })
                 }
             })
     })

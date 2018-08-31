@@ -21,8 +21,12 @@
                     <p><%=asset.tokenPrice%></p>
                     <span class="meta-heading"><b>Available Tokens:</b></span>  
                     <p><%=asset.tokenAvail%></p>
-                    <span class="meta-heading"><b>Location:</b></span>
+                    <span class="meta-heading"><b>Location:</b></span>  
                     <p><%=asset.location%></p>
+                    <span class="meta-heading"><b>Wallet Information:</b></span>  
+                    <span><%=asset.wallet.token%></span>
+                    <span><%=asset.wallet.balance%></span>
+                    <p><%=asset.wallet.publicKey%></p>
                 </div>
             </div>  
         </div>

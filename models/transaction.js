@@ -4,8 +4,8 @@ var mongoose    = require("mongoose");
 
 var transactionSchema = mongoose.Schema({
     title: String,
-    buyer: String,
-    seller: String,
+    buyerKey: String,
+    sellerKey: String,
     token: String,
     amount: Number,
     asset: String

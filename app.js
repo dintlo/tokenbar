@@ -50,7 +50,7 @@ app.get("/assets/new", function(req, res){
 
 //Asset:Show
 app.get("/asset/:id", function(req, res){
-    Asset.findById(req.params.id, function(err, asset){
+    Asset.findById(req.params.id).populate("transactions","wallet").exec(function(err, asset){
         if(err){
             console.log(err);
         } else {
