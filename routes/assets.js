@@ -16,12 +16,16 @@ router.get("/", function(req, res){
 
 //Asset:Post
 router.post("/", function(req, res){
-    var newAsset = {name: req.body.name, type: req.body.type, location: req.body.location, description:req.body.description, image: req.body.image};
+    var newAsset = {
+        name: req.body.name, type: req.body.type, location: req.body.location, 
+        description:req.body.description, image: req.body.image,
+        token: req.body.token, tokenCap: req.body.tokenCap, tokenPrice: req.body.tokenPrice
+    };
     Asset.create(newAsset, function(err, newlyAsset){
         if(err){
             console.log(err);
         } else {
-            res.redirect("assets/index");
+            res.redirect("/assets");
         }
     })
 });

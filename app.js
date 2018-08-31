@@ -7,7 +7,7 @@ var express     = require("express"),
     indexRoutes = require("./routes/index"),
     transactionRoutes = require("./routes/transactions");
     
-seedDB();
+//seedDB();
 mongoose.connect("mongodb://localhost/tokenbar");
 
 app.use(bodyParser.urlencoded({extended:true}));
