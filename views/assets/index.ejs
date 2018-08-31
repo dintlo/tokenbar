@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <h1>This is the assets page.</h1>
 
@@ -17,7 +17,7 @@
                     <h3 class="name"><%= asset.name%></h3>  
                     <p class="description"><%= asset.description%></p>
                     <p>
-                        <a class="btn btn-primary" href="/asset/<%=asset._id%>">More Info</a>
+                        <a class="btn btn-primary" href="/assets/<%=asset._id%>">More Info</a>
                     </p>
                 </div>
             
@@ -26,4 +26,4 @@
         </div>
     </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>

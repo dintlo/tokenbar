@@ -1,5 +1,5 @@
 var mongoose    = require("mongoose"),
-    Asset       = require("./models/assets"),
+    Asset       = require("./models/asset"),
     Transaction = require("./models/transaction"),
     Wallet      = require("./models/wallet")
 
