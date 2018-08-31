@@ -94,7 +94,9 @@ img {
 
 .img-fluid {
   width:100%;
-  height:50%;
+  height: 429px;
+  min-height:200px;
+  
 }
 
 #form-container.container {
