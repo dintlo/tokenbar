@@ -4,7 +4,8 @@ var express     = require("express"),
     mongoose    = require("mongoose"),
     seedDB      = require("./seed.js"),
     assetRoutes = require("./routes/assets"),
-    indexRoutes = require("./routes/index");
+    indexRoutes = require("./routes/index"),
+    transactionRoutes = require("./routes/transactions");
     
 seedDB();
 mongoose.connect("mongodb://localhost/tokenbar");
@@ -17,6 +18,7 @@ app.use(express.static("public"));
 
 app.use("/", indexRoutes);
 app.use("/assets", assetRoutes);
+app.use("/transactions", transactionRoutes);
 
 app.listen(3005, function(){
     console.log("Tokenbar server has started!!!")
