@@ -1,6 +1,7 @@
 var express     = require("express"),
     router      = express.Router(),
-    Asset       = require("../models/asset")
+    Asset       = require("../models/asset"),
+    middlewareObj = require("../middleware/middleware");
 
 //Asset:Get
 router.get("/", function(req, res){
@@ -15,7 +16,7 @@ router.get("/", function(req, res){
 })
 
 //Asset:Post
-router.post("/", function(req, res){
+router.post("/",middlewareObj.isLoggedIn, function(req, res){
     var newAsset = {
         name: req.body.name, type: req.body.type, location: req.body.location, 
         description:req.body.description, image: req.body.image,
@@ -31,7 +32,7 @@ router.post("/", function(req, res){
 });
 
 //Asset:New
-router.get("/new", function(req, res){
+router.get("/new",middlewareObj.isLoggedIn, function(req, res){
     res.render("assets/new");
 })
 
