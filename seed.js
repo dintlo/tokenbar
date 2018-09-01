@@ -1,4 +1,5 @@
 var mongoose    = require("mongoose"),
+    User       = require("./models/user"),
     Asset       = require("./models/asset"),
     Transaction = require("./models/transaction"),
     Wallet      = require("./models/wallet")
@@ -33,6 +34,32 @@ var assetData = [
     image:"https://images.unsplash.com/photo-1500595046743-cd271d694d30?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d50be9f2155f55c280b89ad55e66585&auto=format&fit=crop&w=1053&q=80"}
 ]
 function seedDB(){
+    //Remove all users
+    User.remove({},function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Deleted all user successfully.");
+        }
+    });
+
+    //Remove all wallets
+    Wallet.remove({},function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Deleted all wallets successfully.");
+        }
+    });
+
+    //Remove all wallets
+    Transaction.remove({},function(err){
+        if(err){
+            console.log(err);
+        } else {
+            console.log("Deleted all transactions successfully.");
+        }
+    });
 
     //Remove Assets
     Asset.remove({}, function(err){

@@ -3,6 +3,7 @@ var express             = require("express"),
     bodyParser          = require("body-parser"),
     mongoose            = require("mongoose"),
     seedDB              = require("./seed.js"),
+    userRoutes          = require("./routes/users"),
     assetRoutes         = require("./routes/assets"),
     indexRoutes         = require("./routes/index"),
     transactionRoutes   = require("./routes/transactions"),
@@ -42,6 +43,7 @@ app.use(function(req, res, next){
 app.use("/", indexRoutes);
 app.use("/assets", assetRoutes);
 app.use("/transactions", transactionRoutes);
+app.use("/users", userRoutes);
 
 app.listen(3005, function(){
     console.log("Tokenbar server has started!!!")

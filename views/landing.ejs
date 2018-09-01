@@ -17,13 +17,13 @@
                     <ul class="nav navbar-nav ml-auto">
                         <%if(!currentUser){%>
                             <li role="presentation" class="nav-item"><a href="/assets" class="nav-link active" >Explore</a></li>
-                            <li role="presentation" class="nav-item"><a href="/login" class="nav-link active">Login</a></li>
-                            <li role="presentation" class="nav-item"><a href="/register" class="nav-link active">Register</a></li>
+                            <li role="presentation" class="nav-item"><a href="/users/login" class="nav-link active">Login</a></li>
+                            <li role="presentation" class="nav-item"><a href="/users/register" class="nav-link active">Register</a></li>
                         <%} else {%>
                             <li role="presentation" class="nav-item"><a href="/assets" class="nav-link active" >Browse</a></li>
                             <li role="presentation" class="nav-item"><a href="/assets/new" class="nav-link active">Create</a></li>
-                            <li role="presentation" class="nav-item"><a href="#" class="nav-link active"><%=currentUser.username%></a></li>
-                            <li role="presentation" class="nav-item"><a href="/logout" class="nav-link active">Logout</a></li>
+                            <li role="presentation" class="nav-item"><a href="/users" class="nav-link active"><%=currentUser.username%></a></li>
+                            <li role="presentation" class="nav-item"><a href="/users/logout" class="nav-link active">Logout</a></li>
                         <%}%>
                     </ul>
                 </div>

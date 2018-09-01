@@ -25,8 +25,8 @@ var assetSchema = mongoose.Schema({
         },
         token: String,
         balance: String,
-        publicKey: Number,
-        privateKey: Number,
+        publicKey: String,
+        privateKey: String,
     },
 });
 
