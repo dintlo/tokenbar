@@ -31,7 +31,7 @@ router.post("/register", function(req, res){
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.redirect("/register");
+            return res.redirect("/users/register");
         } else {
             //log user in
             passport.authenticate("local")(req, res, function(){
@@ -49,8 +49,8 @@ router.get("/login", function(req, res){
 //authenticate a user
 router.post("/login", passport.authenticate("local",
 {
-    successRedirect: "/",
-    failureRedirect: "/login"
+    successRedirect: "/users",
+    failureRedirect: "/users/login"
 
 }) ,function(req, res){})
 

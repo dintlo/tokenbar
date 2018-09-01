@@ -15,26 +15,56 @@
                     <h3 style="margin-bottom: 20px;"><%= asset.description%></h3>
                     <p style="text-align: left;">Nam a ultrices mauris. Nam efficitur, lorem a vehicula interdum, ligula velit euismod lorem, vitae vehicula ligula tortor eu leo. Maecenas porttitor massa ut vestibulum euismod. Aliquam eget mi aliquam.</p>
                     <p style="text-align: left;">Lorem ipsum dapibus dolor non, malesuada mauris. Aliquam eleifend mauris non odio mattis auctor. Aenean sit amet elementum tellus, a facilisis ligula. Pellentesque ac vehicula mauris.</p>
+                    <a style="justify-content:center;width:50%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-success">Purchase</a>
                 </div>
             </div>
             <div style="text-align: left; margin-left: 130px; margin-top:60px;" class="col-12 col-md-3 tags">
+                <h5 style="text-align:center;">Asset Metrics</h5>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                        <th scope="row">Token:</th>
+                        <td><%=asset.token%></td>
+                        </tr>
 
+                        <tr>
+                        <th scope="row">Token Price:</th>
+                        <td><%=asset.tokenPrice%></td>
+                        </tr>
+
+                        <tr>
+                        <th scope="row">Available Tokens:</th>
+                        <td><%=asset.tokenAvail%></td>
+                        </tr>
+                    </tbody>
+                </table>
                
-                <span class="meta-heading"><b>Token:</b></span>
-                <span><%=asset.token%></span>
-                <p><%=asset.tokenPrice%></p>
-                <span class="meta-heading"><b>Available Tokens:</b></span>  
-                <p><%=asset.tokenAvail%></p>
-                <span class="meta-heading"><b>Location:</b></span>  
-                <p><%=asset.location%></p>
-                <span class="meta-heading"><b>Wallet Information:</b></span>  
-                <span><%=asset.wallet.token%></span>
-                <span><%=asset.wallet.balance%></span>
-                <p><%=asset.wallet.publicKey%></p>
                 
-                <div style="justify-content:left;">
-                    <a style="justify-content:left; text-align: left;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-success">Purchase</a>
-                </div>
+                <h5 style="text-align:center;">Associated Wallets</h5>
+                <% asset.wallets.forEach(function(wallet){ %>
+                    
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                            <th scope="row">Token:</th>
+                            <td><%=wallet.token%></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Balance:</th>
+                            <td><%=wallet.balance%></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Public key:</th>
+                            <td><%=wallet.publicKey%></td>
+                            </tr>
+                            <tr>
+                            <th scope="row">Private key:</th>
+                            <td><%=wallet.privateKey%></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <%});%>
+               
             </div>  
         </div>
        

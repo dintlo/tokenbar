@@ -18,7 +18,7 @@ var assetSchema = mongoose.Schema({
             ref: "Transaction"
         }
     ],
-    wallet : {
+    wallets : [{
         id:{
             type : mongoose.Schema.Types.ObjectId,
             ref : "Wallet"
@@ -27,7 +27,7 @@ var assetSchema = mongoose.Schema({
         balance: String,
         publicKey: String,
         privateKey: String,
-    },
+    }],
 });
 
 module.exports = mongoose.model("Asset", assetSchema);
