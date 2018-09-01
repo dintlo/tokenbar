@@ -16,6 +16,37 @@ var UserSchema = new mongoose.Schema({
         publicKey: String,
         privateKey: String,
     }],
+    assets :[{
+        id:{
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Asset"
+        },
+        name: String,
+    type: String,
+    description: String,
+    location: String,
+    image: String,
+    tokenCap: Number,
+    tokenAvail: Number,
+    token: String,
+    tokenPrice: Number,
+    transactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Transaction"
+        }
+    ],
+    wallets : [{
+        id:{
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Wallet"
+        },
+        token: String,
+        balance: String,
+        publicKey: String,
+        privateKey: String,
+    }],
+    }]
 })
 
 UserSchema.plugin(passportLocalMongoose);

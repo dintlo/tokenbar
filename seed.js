@@ -108,15 +108,15 @@ function seedDB(){
         } else {
             console.log("Removed all Assets in the database.")
             //Create Assets
-            assetData.forEach(function(seed){
-            Asset.create(seed, function(err, newAsset){
-                if(err){
-                    console.log(err);
-                } else {
-                    console.log("Created an  Assets in the database.");
-                }
-            })
-    })
+            // assetData.forEach(function(seed){
+            // Asset.create(seed, function(err, newAsset){
+            //     if(err){
+            //         console.log(err);
+            //     } else {
+            //         console.log("Created an  Assets in the database.");
+            //     }
+            //     })
+            // })
         }
     }) 
     

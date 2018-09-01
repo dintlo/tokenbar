@@ -2,29 +2,53 @@
 
 <div  id="form-container" class="container" >
     <h1 style="margin:25px;">Buy an Asset Token from <%=asset.name%></h1>
-      <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
-        <form action="/transactions" method="post">
-            <div class="form-group">
-                <label for="name">Asset Token</label>
-                <input id="token" class="form-control" type="text" disabled="true" name="token" placeholder="<%=asset.token%>">
-            </div>
-            <div class="form-group">
-                <label for="name">Asset Public Key</label>
-                <input class="form-control" type="text" disabled="true" name="sellerKey" placeholder="<%=asset.wallet.publicKey%>">
-            </div>
-            <div class="form-group">
-                <label for="name">Your Public Key</label>
-                <input class="form-control" type="text" name="buyerKey" placeholder="Your public Key">
-            </div>
-            <div class="form-group">
-                <label for="name">Amounts of Token</label>
-                <input class="form-control" type="text" name="amount" placeholder="amount">
-            </div>
-            <div class="form-group">
-                <button class="form-control btn-dark" type="submit">Submit</button>
-            </div>
-        </form>
+    <div class="row">
+        <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
+            <form action="/transactions" method="post">
+                <div class="form-group">
+                    <label for="name">Asset Token</label>
+                    <input id="token" class="form-control" type="text" disabled="true" name="token" placeholder="<%=asset.token%>">
+                </div>
+                <div class="form-group">
+                    <label for="name">Asset Public Key</label>
+                    <input class="form-control" type="text" disabled="true" name="sellerKey" placeholder="<%=asset.wallets[0].publicKey%>">
+                </div>
+                <div class="form-group">
+                    <label for="name">Your Public Key</label>
+                    <input class="form-control" type="text" name="buyerKey" placeholder="Your public Key">
+                </div>
+                <div class="form-group">
+                    <label for="name">Amounts of Token</label>
+                    <input class="form-control" type="text" name="amount" placeholder="amount">
+                </div>
+                <div class="form-group">
+                    <button class="form-control btn-dark" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md-3">
+            <% currentUser.wallets.forEach(function(wallet){ %>
+                <h5 style="text-align:center;">Your Wallets</h5>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Token:</th>
+                            <td><%=wallet.token%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Balance:</th>
+                            <td><%=wallet.balance%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Public key:</th>
+                            <td><%=wallet.publickey%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <%});%>
+        </div>
     </div>
+      
 </div>
 
 <% include ../partials/footer %>

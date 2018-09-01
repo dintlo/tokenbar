@@ -1,6 +1,7 @@
 var express     = require("express"),
     router      = express.Router(),
     Asset       = require("../models/asset"),
+    User        = require("../models/user"),
     middlewareObj = require("../middleware/middleware");
 
 //Asset:Get
@@ -20,13 +21,35 @@ router.post("/",middlewareObj.isLoggedIn, function(req, res){
     var newAsset = {
         name: req.body.name, type: req.body.type, location: req.body.location, 
         description:req.body.description, image: req.body.image,
-        token: req.body.token, tokenCap: req.body.tokenCap, tokenPrice: req.body.tokenPrice
-    };
+        token: req.body.token, tokenCap: req.body.tokenCap, tokenPrice: req.body.tokenPrice,
+        wallets:[
+            {
+                token: req.body.token,
+                balance: req.body.tokenCap,
+                publicKey: "12121212120",
+                privateKey: "2121212120",
+            },
+            {
+                token: "NLT",
+                balance: 0,
+                publicKey: "12121212121",
+                privateKey: "212121212121",
+            }]
+        };
+
     Asset.create(newAsset, function(err, newlyAsset){
         if(err){
             console.log(err);
         } else {
-            res.redirect("/assets");
+            
+            var updatedUser = req.user.assets.push(newlyAsset);
+            User.findByIdAndUpdate(req.user.id, updatedUser, function(err, newUser){
+                if(err){
+                    console.log(err);
+                } else {
+                    res.redirect("/assets");
+                }
+            })
         }
     })
 });
