@@ -1,0 +1,22 @@
+<% include partials/header %>
+
+<div  id="form-container" class="container" >
+    <h1 style="margin:25px;">Login</h1>
+      <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input id="token" class="form-control" type="text" name="username" placeholder="Username">
+            </div>  
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <button class="form-control btn-dark" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<% include partials/footer %>
