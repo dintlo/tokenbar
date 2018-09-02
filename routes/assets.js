@@ -3,7 +3,7 @@ var express     = require("express"),
     Asset       = require("../models/asset"),
     User        = require("../models/user"),
     middlewareObj = require("../middleware/middleware"),
-    tokenization = require("../services/tokenization")
+    tokenizationService = require("../services/tokenization")
 
 
 //Asset:Get
@@ -20,7 +20,7 @@ router.get("/", function(req, res){
 
 //Asset:Post
 router.post("/",middlewareObj.isLoggedIn, function(req, res){
-    var newAsset = tokenization.createAsset(req)
+    var newAsset = tokenizationService.createAsset(req)
     
     Asset.create(newAsset, function(err, newlyAsset){
         if(err){

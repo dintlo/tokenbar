@@ -3,6 +3,7 @@ var express     = require("express"),
     Transaction = require("../models/transaction"),
     Asset       = require("../models/asset"),
     middlewareObj = require("../middleware/middleware");
+    transactionService = require("../services/transaction");
 
 //:Get
 router.get("/",middlewareObj.isLoggedIn, function(req, res){
@@ -17,15 +18,19 @@ router.get("/",middlewareObj.isLoggedIn, function(req, res){
 })
 
 //:Post
-router.post("/",middlewareObj.isLoggedIn, function(req, res){
-    var newTransaction = {buyerKey: req.user.wallets[0].publicKey, sellerKey: req.body.as, token: req.body.token, amount:req.body.amount};
-    Transaction.create(newTransaction, function(err, newlyTransaction){
-        if(err){
-            console.log(err);
-        } else {
-            res.redirect("assets/index");
-        }
-    })
+router.post("/:id",middlewareObj.isLoggedIn, function(req, res){
+    transactionService.createTransaction(req, function(newTransaction){
+        console.log(newTransaction);
+        Transaction.create(newTransaction, function(err, newlyTransaction){
+            if(err){
+                console.log(err);
+            } else {
+                res.render("transactions/show",{transaction:newlyTransaction});
+            }
+        })
+    });
+    
+    
 });
 
 //:New

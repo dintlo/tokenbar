@@ -3,36 +3,40 @@
 <div  id="form-container" class="container" >
     <h1 style="margin:25px;">Buy an Asset Token from <%=asset.name%></h1>
     <div class="row">
+        
         <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
-            <form action="/transactions" method="post">
+            <form action="/transactions/<%=asset._id%>" method="post">
                 <div class="form-group">
-                    <label for="name">Asset Token</label>
-                    <input id="token" class="form-control" type="text" disabled="true" name="token" placeholder="<%=asset.token%>">
+                    <label for="token">Asset Token</label>
+                    <input id="token" class="form-control" type="text" readonly name="token" value="<%=asset.token%>">
                 </div>
                 <div class="form-group">
-                    <label for="name">Available Tokens</label>
-                    <input class="form-control" type="text" disabled="true" placeholder="<%=asset.tokenAvail%>">
+                    <label for="tokenAvail">Available Tokens</label>
+                    <input id="tokenAvail" class="form-control" type="text" name="tokenAvail" readonly value="<%=asset.tokenAvail%>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="currencyToken">Purchase currency</label>
+                    <input id="currencyToken" class="form-control" type="text" name="currencyToken" readonly value="NLT" >
                 </div>
                 <div class="form-group">
-                    <label for="name">Token Price in <b>NLT</b></label>
-                    <input class="form-control" disabled="true" type="text" placeholder="<%=asset.tokenPrice%>">
+                    <label for="tokenPrice">Exchange Rate: <b><%=asset.token%>/NLT</b></label>
+                    <input id="tokenPrice" class="form-control" name="tokenPrice" type="text" readonly value="<%=asset.tokenPrice%>" >
                 </div>
                 <div class="form-group">
-                    <label for="name">Totol Price in <b>NLT</b></label>
-                    <input class="form-control" disabled="true" type="text" name="amount" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label for="name">Amounts of Token in <b><%=asset.token%></b></label>
+                    <label for="amount">Your purchase ammount in: <b><%=asset.token%></b></label>
                     <input class="form-control" type="text" name="amount" placeholder="amount">
                 </div>
                 <div class="form-group">
                     <button class="form-control btn-dark" type="submit">Submit</button>
+                    <a style="margin-top:5px;" class="form-control btn btn-light" href="/assets/<%=asset._id%>">Back</a>
                 </div>
+
             </form>
         </div>
-        <div class="col-12 col-md-3">
+        <div  class="col-12 col-md-4">
+            <h5 style="text-align:center;">Your Wallets</h5>
             <% currentUser.wallets.forEach(function(wallet){ %>
-                <h5 style="text-align:center;">Your Wallets</h5>
                 <table style="text-align:left;" class="table table-striped">
                     <tbody>
                         <tr>
@@ -43,10 +47,12 @@
                             <th scope="row">Balance</th>
                             <td><%=wallet.balance%></td>
                         </tr>
-                        <tr>
-                            <th scope="row">Buying power</th>
-                            <td><%=wallet.balance * asset.tokenPrice%> <b><%=asset.token%></b></td>
-                        </tr>
+                        <%if(wallet.token=="NLT"){%>
+                            <tr>
+                                <th scope="row">You can buy up to</th>
+                                <td><%=wallet.balance * asset.tokenPrice%> <b><%=asset.token%></b></td>
+                            </tr>
+                            <%} %>
                     </tbody>
                 </table>
             <%});%>

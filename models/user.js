@@ -12,7 +12,7 @@ var UserSchema = new mongoose.Schema({
             ref : "Wallet"
         },
         token: String,
-        balance: String,
+        balance: Number,
         publicKey: String,
         privateKey: String,
     }],
@@ -42,7 +42,7 @@ var UserSchema = new mongoose.Schema({
             ref : "Wallet"
         },
         token: String,
-        balance: String,
+        balance: Number,
         publicKey: String,
         privateKey: String,
     }],

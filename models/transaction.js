@@ -5,8 +5,11 @@ var mongoose    = require("mongoose");
 var transactionSchema = mongoose.Schema({
     buyerKey: String,
     sellerKey: String,
-    token: String,
-    amount: Number
+    currencyToken: String,
+    assetToken: String,
+    amount: Number,
+    status: String,
+    isSuccessful: Boolean
 });
 
 module.exports = mongoose.model("Transaction", transactionSchema);

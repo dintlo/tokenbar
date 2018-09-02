@@ -24,7 +24,7 @@ var assetSchema = mongoose.Schema({
             ref : "Wallet"
         },
         token: String,
-        balance: String,
+        balance: Number,
         publicKey: String,
         privateKey: String,
     }],

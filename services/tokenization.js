@@ -3,9 +3,9 @@ var Asset       = require("../models/asset"),
     Transaction = require("../models/transaction"),
     User        = require("../models/user")
 
-var tokenization = {}
+var tokenizationService = {}
 
-tokenization.createAsset = function (req) {
+tokenizationService.createAsset = function (req) {
     var newAsset = {
         name: req.body.name, type: req.body.type, location: req.body.location, 
         description:req.body.description, image: req.body.image, tokenAvail: req.body.tokenCap,
@@ -28,4 +28,4 @@ tokenization.createAsset = function (req) {
         return newAsset;
 }
 
-module.exports = tokenization;
+module.exports = tokenizationService;

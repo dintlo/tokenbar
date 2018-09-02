@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<div  id="form-container" class="container" >
+    <h1 style="margin:25px;">Transaction Successful!</h1>
+    <div class="row">
+        <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
+                <h5 style="text-align:center;">Receipt</h5>
+                <table style="text-align:left;" class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">User Public Key</th>
+                            <td><%=transaction.buyerKey%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Asset Public Key </th>
+                            <td><%=transaction.sellerKey%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Currency Used</th>
+                            <td><%=transaction.currencyToken%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Asset Token bought</th>
+                            <td><%=transaction.assetToken%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Amount</th>
+                            <td><%=transaction.amount%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Status</th>
+                            <td><%=transaction.status%></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <a style="margin-top:5px;" class="form-control btn btn-dark" href="/assets">Continue Shopping</a>
+                </div>
+        </div>
+    </div>
+      
+</div>
+
+<% include ../partials/footer %>
