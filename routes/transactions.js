@@ -18,7 +18,7 @@ router.get("/",middlewareObj.isLoggedIn, function(req, res){
 
 //:Post
 router.post("/",middlewareObj.isLoggedIn, function(req, res){
-    var newTransaction = {buyerKey: req.body.buyerKey, sellerKey: req.body.sellerKey, token: req.body.token, amount:req.body.amount};
+    var newTransaction = {buyerKey: req.user.wallets[0].publicKey, sellerKey: req.body.as, token: req.body.token, amount:req.body.amount};
     Transaction.create(newTransaction, function(err, newlyTransaction){
         if(err){
             console.log(err);

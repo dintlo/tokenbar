@@ -106,7 +106,7 @@ function seedDB(){
         if(err){
             console.log(err);
         } else {
-            console.log("Removed all Assets in the database.")
+            console.log("Deleted all assets successfully.")
             //Create Assets
             // assetData.forEach(function(seed){
             // Asset.create(seed, function(err, newAsset){

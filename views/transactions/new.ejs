@@ -10,15 +10,19 @@
                     <input id="token" class="form-control" type="text" disabled="true" name="token" placeholder="<%=asset.token%>">
                 </div>
                 <div class="form-group">
-                    <label for="name">Asset Public Key</label>
-                    <input class="form-control" type="text" disabled="true" name="sellerKey" placeholder="<%=asset.wallets[0].publicKey%>">
+                    <label for="name">Available Tokens</label>
+                    <input class="form-control" type="text" disabled="true" placeholder="<%=asset.tokenAvail%>">
                 </div>
                 <div class="form-group">
-                    <label for="name">Your Public Key</label>
-                    <input class="form-control" type="text" name="buyerKey" placeholder="Your public Key">
+                    <label for="name">Token Price in <b>NLT</b></label>
+                    <input class="form-control" disabled="true" type="text" placeholder="<%=asset.tokenPrice%>">
                 </div>
                 <div class="form-group">
-                    <label for="name">Amounts of Token</label>
+                    <label for="name">Totol Price in <b>NLT</b></label>
+                    <input class="form-control" disabled="true" type="text" name="amount" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="name">Amounts of Token in <b><%=asset.token%></b></label>
                     <input class="form-control" type="text" name="amount" placeholder="amount">
                 </div>
                 <div class="form-group">
@@ -29,19 +33,19 @@
         <div class="col-12 col-md-3">
             <% currentUser.wallets.forEach(function(wallet){ %>
                 <h5 style="text-align:center;">Your Wallets</h5>
-                <table class="table table-striped">
+                <table style="text-align:left;" class="table table-striped">
                     <tbody>
                         <tr>
-                            <th scope="row">Token:</th>
+                            <th scope="row">Token</th>
                             <td><%=wallet.token%></td>
                         </tr>
                         <tr>
-                            <th scope="row">Balance:</th>
+                            <th scope="row">Balance</th>
                             <td><%=wallet.balance%></td>
                         </tr>
                         <tr>
-                            <th scope="row">Public key:</th>
-                            <td><%=wallet.publickey%></td>
+                            <th scope="row">Buying power</th>
+                            <td><%=wallet.balance * asset.tokenPrice%> <b><%=asset.token%></b></td>
                         </tr>
                     </tbody>
                 </table>
