@@ -9,11 +9,13 @@ var express             = require("express"),
     transactionRoutes   = require("./routes/transactions"),
     passport            = require("passport"),
     LocalStrategy       = require("passport-local"),
-    User                = require("./models/user")
+    User                = require("./models/user"),
+    database            =require("./config/database"),
+    port                = process.env.PORT || 3006
     
 //seedDB();
 
-mongoose.connect("mongodb://localhost/tokenbar");
+mongoose.connect(database.localUrl);
 
 app.use(bodyParser.urlencoded({extended:true}));
 

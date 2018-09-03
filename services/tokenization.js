@@ -29,18 +29,20 @@ tokenizationService.createAsset = function (req) {
             privateKey: "212121212121",
         }]
     };
-
-        return newAsset;
+    return newAsset;
 }
 
 tokenizationService.getAssetsById = function(id, callback){
    
-    User.findById({_id: id}, function(err, foundUser){
+    User.findOne({_id: id}, function(err, foundUser){
         if(err){
             console.log(err);
         } else {
+            // var assets = foundUser.assets.map(function(assets) { return assets; });
+            var assets = JSON.parse(JSON.stringify(foundUser.assets));
             
-            callback(foundUser.assets);
+            console.log(assets.name)
+            callback(assets);
         }
     })
 }

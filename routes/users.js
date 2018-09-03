@@ -72,13 +72,11 @@ router.get("/", function(req, res){
     
 // })
 
+
 //See your tokenized assets
 router.get("/myassets", function(req, res){
     tokenizationService.getAssetsById(req.user._id, function(assets){
-        console.log(assets);
-        var assetsArray = [];
-        assetsArray.push(assets)
-        res.render("users/myassets", {assets:assets})
+        res.render("users/myassets", {myassets:assets})
     })
 });
 
