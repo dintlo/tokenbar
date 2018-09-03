@@ -16,7 +16,7 @@ var express             = require("express"),
 
 seedDB();
 
-mongoose.connect(process.env.MONGO_URL || database.localUrl);
+mongoose.connect("mongodb://tokenbar:4jiasmRVrraiEz8NQDqhL4hFG0w2LJPBU3ogippn47uFjb0lpBg7YOc2Sh0IRQqNK6LBsmEcA253mjLmAfzWAQ==@tokenbar.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" || database.localUrl);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
