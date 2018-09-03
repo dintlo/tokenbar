@@ -13,10 +13,10 @@ var express             = require("express"),
     database            =require("./config/database"),
     port                = process.env.PORT || 3006
     
-    
+
 seedDB();
 
-mongoose.connect(process.env.CUSTOMCONNSTR_MONGO_URL || database.localUrl);
+mongoose.connect(process.env.MONGO_URL || database.localUrl);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
