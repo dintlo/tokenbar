@@ -13,6 +13,7 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else {
+            console.log(assets)
             res.render("assets/index", {assets:assets});
         }
     })

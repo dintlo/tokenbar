@@ -92,11 +92,11 @@ assetTransfer = function(assetWallets, price, amount, token, callback){
         itemprocessed++;
         
         if(item.token=="NLT"){
-            item.balance = item.balance + amount*price;
+            item.balance = item.balance + amount/price;
         }
         if(item.token==token){
             newTransaction.sellerKey = item.publicKey;
-            item.balance = item.balance -  amount;
+            item.balance = item.balance - amount;
         }
         if(itemprocessed == array.length){
             callback();
@@ -111,7 +111,7 @@ userTransfer = function( userWallets, price, amount, token, callback){
         itemprocessed ++;
 
         if(item.token=="NLT"){
-            item.balance = item.balance- amount*price;
+            item.balance = item.balance - amount/price;
         }
         if(item.token==token){
             newTransaction.buyerKey = item.publicKey;

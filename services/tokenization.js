@@ -39,7 +39,8 @@ tokenizationService.getAssetsById = function(id, callback){
         if(err){
             console.log(err);
         } else {
-            callback(foundUser);
+            
+            callback(foundUser.assets);
         }
     })
 }
