@@ -5,7 +5,9 @@ var express     = require("express"),
     Asset       = require("../models/asset"),
     Wallet      = require("../models/wallet"),
     Transaction = require("../models/transaction"),
-    middlewareObj = require("../middleware/middleware")
+    middlewareObj = require("../middleware/middleware"),
+    tokenizationService = require("../services/tokenization")
+
 
 //Show register form
 router.get("/register", function(req, res){
@@ -65,10 +67,29 @@ router.get("/", function(req, res){
     res.render("users/show")
 });
 
-// See a users profile page
-router.get("/:id", function(req, res){
+// // See a users profile page
+// router.get("/:id", function(req, res){
     
-})
+// })
+
+//See your tokenized assets
+router.get("/myassets", function(req, res){
+    tokenizationService.getAssetsById(req.user._id, function(foundUser){
+        res.render("users/myassets", {assets:foundUser.assets})
+    })
+});
+
+//See your asset portfolio
+router.get("/portfolio", function(req, res){
+    var portfolio;
+    req.user.wallets.array.forEach(wallet => {
+        tokenizationService.getAssetsByPublicAddress(wallet.publicKey, function(assets){
+            portfolio.push(assets);
+        })
+    });
+    
+    res.render("users/portfolio", {assets:portfolio})
+});
 
 
 module.exports = router;

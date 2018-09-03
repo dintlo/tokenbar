@@ -1,9 +1,9 @@
 <% include ../partials/header %>
 
 <div  id="form-container" class="container" >
-        <h1 style="margin:25px;">Account Details</h1>
-          <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
-        
+       
+        <div class="col-12 col-md-6" style="margin:auto; text-align: left;">
+            <h1 style="margin:25px;">Account Details</h1>
             <table class="table table-striped">
                 <tbody>
                     <tr>
@@ -20,6 +20,7 @@
                     </tr>
                 </tbody>
             </table>
+
             <h1 style="text-align:center;">Wallets</h1>
             <% currentUser.wallets.forEach(function(wallet){ %>
                 

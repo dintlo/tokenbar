@@ -22,31 +22,31 @@ var UserSchema = new mongoose.Schema({
             ref : "Asset"
         },
         name: String,
-    type: String,
-    description: String,
-    location: String,
-    image: String,
-    tokenCap: Number,
-    tokenAvail: Number,
-    token: String,
-    tokenPrice: Number,
-    transactions: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Transaction"
-        }
-    ],
-    wallets : [{
-        id:{
-            type : mongoose.Schema.Types.ObjectId,
-            ref : "Wallet"
-        },
+        type: String,
+        description: String,
+        location: String,
+        image: String,
+        tokenCap: Number,
+        tokenAvail: Number,
         token: String,
-        balance: Number,
-        publicKey: String,
-        privateKey: String,
-    }],
-    }]
+        tokenPrice: Number,
+        transactions: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Transaction"
+            }
+        ],
+        wallets : [{
+            id:{
+                type : mongoose.Schema.Types.ObjectId,
+                ref : "Wallet"
+            },
+            token: String,
+            balance: Number,
+            publicKey: String,
+            privateKey: String,
+        }],
+        }]
 })
 
 UserSchema.plugin(passportLocalMongoose);

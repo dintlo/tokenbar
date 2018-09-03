@@ -59,7 +59,7 @@ transactionService.createTransaction = function (req, callback) {
                     userTransfer(req.user.wallets, newTransaction.price, newTransaction.amount, newTransaction.assetToken, function(){
                         //update user wallets
                         asset.tokenAvail -= newTransaction.amount;
-                        User.findOneAndUpdate({_id: req.user.id},req.user, function(err, newUser){
+                        User.findOneAndUpdate({_id: req.user._id},req.user, function(err, newUser){
                             if(err){
                                 console.log(err);
                             } else {
@@ -79,9 +79,7 @@ transactionService.createTransaction = function (req, callback) {
                     })
                 });
             }
-        });
-       
-        
+        });   
 }
 
 assetTransfer = function(assetWallets, price, amount, token, callback){
@@ -120,4 +118,13 @@ userTransfer = function( userWallets, price, amount, token, callback){
     });
 }
 
+getUserTransaction = function(id, callback){
+    Transaction.findById(id, function(err, foundTransactions){
+        if(err){
+            console.log(err);
+        } else {
+            callback(foundTransactions);
+        }
+    })
+}
 module.exports = transactionService;

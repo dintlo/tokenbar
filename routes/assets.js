@@ -28,10 +28,11 @@ router.post("/",middlewareObj.isLoggedIn, function(req, res){
         } else {
             
             var updatedUser = req.user.assets.push(newlyAsset);
-            User.findByIdAndUpdate(req.user.id, updatedUser, function(err, newUser){
+            User.findByIdAndUpdate(req.user._id, req.user, function(err, newUser){
                 if(err){
                     console.log(err);
                 } else {
+                    console.log(newUser)
                     res.redirect("/assets");
                 }
             })

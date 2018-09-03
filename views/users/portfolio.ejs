@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<h1>My Assets</h1>
+
+<div  class="projects-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Assets</h2>
+                <p class="text-center">Browse through our hundreds of Assets which have been tokenized.</p>
+            </div>
+            <div class="row row-sm-12" >
+                <% assets.forEach(function(asset){ %>  
+                <div class="col-sm-6 col-md-4 item" >
+                    <a style="text-decoration: none; color: #333" href="/assets/<%=asset._id%>">
+                        <img class="img-fluid" src="<%= asset.image %>" />
+                        <h3 class="name"><%= asset.name%></h3>
+                        <p class="description"><%= asset.description%></p>
+                    </a>  
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+
+<% include ../partials/footer %>
