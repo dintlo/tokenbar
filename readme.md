@@ -1,43 +1,25 @@
-#TokenBar
 
-An online ecommerce site where users can purchase tokenized assets.
 
-The site will alllow a user to create an account.
 
-Each user account will have:
-*Name and surname
-*Email 
-*Country
-*Wallet
+What is TokenBar?
 
-Each wallet will contain:
-*Cryptocurrencies
+Tokenbar is a prototype web application to be used for learning purpose. The application will be used to test various blockchain platform which will house the various tokens listed on the app.
 
-Cryptocurrencies will contain:
-*Name
-*Balance
+What is an Asset Token?
 
-The User will be able to browse through various assets.
-User can also be able to search through a list of assets based on type.
-Upon selecting an asset the user will be take to a detail asset page where they can purchase portion of asset using their wallet.
-User will also be able to see what % of the asset has been bought and is available.
+An Asset token is a digital value created on the blockchain to represent the value of a real world asset. Ownershp of this token gives enables access to certain utility and security rights associated to the asset.
 
-Each Asset has:
+How do you purchase an Asset Token?
 
-*Name
-*Type
-*Token Count
-*Token
-*Description
-*Token Name
-*Additional Info
-*Accepted currencies
-*Location
-*Image
+Once you find an Asseet that you like, you will be presented a breakdown of the Asset Metrics. This will highlight the price of an individual Asset Token, along with how many are avaiable. Upon selecting the purchase option you will be taken to the transation page where you can specifiy how many of the asset tokens you want along with the associated price.
 
-A token contains:
-*Name
-*Price
+How do i know if an Asset is real and not fake?
 
-After purchasing an asset a user has can view their asset portfolia and monitor the return they get from the tokens they hold.
+Every asset listed on TokenBar undergoes strict valuation and verification checks before being listed. Furthermore each asset Owner has to produce frequent verification and valudation reports regarding their asset in order for their asset to remain listed.
+
+How do i list an a new Asset?
+
+In order to list a new asset on Tokenbar you will need to submit a proposal where you detail as much information about the asset.
+Following this our team will review and get back to you to initiate the tokenization process. This process will involved a verification and valudation of your asset. Once this is done your asset will be tokenized on the blockchain and made available for users to buy.
+
 
