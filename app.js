@@ -11,12 +11,13 @@ var express             = require("express"),
     LocalStrategy       = require("passport-local"),
     User                = require("./models/user"),
     database            =require("./config/database"),
-    port                = process.env.PORT || 3006
+    port                = process.env.PORT || 8080
     
 
 seedDB();
 
-mongoose.connect("mongodb://tokenbar:4jiasmRVrraiEz8NQDqhL4hFG0w2LJPBU3ogippn47uFjb0lpBg7YOc2Sh0IRQqNK6LBsmEcA253mjLmAfzWAQ==@tokenbar.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" || database.localUrl);
+mongoose.connect(process.env.CUSTOMCONNSTR_MONGO_URL || database.localUrl );
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 
