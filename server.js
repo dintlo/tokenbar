@@ -15,7 +15,7 @@ var express             = require("express"),
     
 //seedDB();
 
-mongoose.connect(database.localUrl);
+mongoose.connect(process.env.MONGO_URL || database.localUrl);
 
 app.use(bodyParser.urlencoded({extended:true}));
 
