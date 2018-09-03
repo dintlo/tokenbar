@@ -45,7 +45,7 @@ tokenizationService.getAssetsById = function(id, callback){
 }
 
 tokenizationService.getAssetsByPublicAddress = function(address, callback){
-    Asset.find({publicKey: address}, function(err, assets){
+    Asset.find({'publicKey': address}, function(err, assets){
         if(err){
             console.log(err);
         } else {

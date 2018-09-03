@@ -3,12 +3,13 @@ var Asset       = require("../models/asset"),
     Transaction = require("../models/transaction"),
     User        = require("../models/user")
 
-//craeate default values for transcation
+//create default values for transcation
 var newTransaction = {
     buyerKey: "",
     sellerKey: "",
     currencyToken: "",
     assetToken: "",
+    exchangeRate: 0,
     amount: 0,
     status: "",
     isSuccessful: false,
@@ -25,11 +26,12 @@ transactionService.createTransaction = function (req, callback) {
             sellerKey: "",
             currencyToken: req.body.currencyToken,
             assetToken: req.body.token,
+            exchangeRate: req.body.tokenPrice,
             amount: Number(req.body.amount),
             status: "Transaction failed.",
             isSuccessful: false,
         };
-
+        
         var userHasWallet = false;
 
         Asset.findById(req.params.id, function(err, asset){
@@ -55,16 +57,17 @@ transactionService.createTransaction = function (req, callback) {
                     );
                 }
                
-                assetTransfer(asset.wallets, newTransaction.price, newTransaction.amount, newTransaction.assetToken, function(){
-                    userTransfer(req.user.wallets, newTransaction.price, newTransaction.amount, newTransaction.assetToken, function(){
-                        //update user wallets
-                        asset.tokenAvail -= newTransaction.amount;
+                //update both asset and user wallets
+                assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.amount, newTransaction.assetToken, function(){
+                    userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.amount, newTransaction.assetToken, function(){
+                    
+                        asset.tokenAvail = asset.tokenAvail - newTransaction.amount;
                         User.findOneAndUpdate({_id: req.user._id},req.user, function(err, newUser){
                             if(err){
                                 console.log(err);
                             } else {
                         
-                                User.findOneAndUpdate({_id: asset.id},asset, function(err, newAsset){
+                                Asset.findOneAndUpdate({_id: asset.id},asset, function(err, newAsset){
                                     if(err){
                                         console.log(err);
                                     } else {
@@ -87,12 +90,13 @@ assetTransfer = function(assetWallets, price, amount, token, callback){
     var itemprocessed = 0;
     assetWallets.forEach((item, index, array) =>{
         itemprocessed++;
+        
         if(item.token=="NLT"){
-            item.balance += amount*price;
+            item.balance = item.balance + amount*price;
         }
         if(item.token==token){
             newTransaction.sellerKey = item.publicKey;
-            item.balance -=  amount;
+            item.balance = item.balance -  amount;
         }
         if(itemprocessed == array.length){
             callback();
@@ -105,12 +109,13 @@ userTransfer = function( userWallets, price, amount, token, callback){
     var itemprocessed = 0;
     userWallets.forEach((item, index, array) =>{
         itemprocessed ++;
+
         if(item.token=="NLT"){
-            item.balance -= amount*price;
+            item.balance = item.balance- amount*price;
         }
         if(item.token==token){
             newTransaction.buyerKey = item.publicKey;
-            item.balance += amount;
+            item.balance = item.balance + amount;
         }
         if(itemprocessed == array.length){
             callback();

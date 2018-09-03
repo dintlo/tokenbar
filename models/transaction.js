@@ -7,6 +7,7 @@ var transactionSchema = mongoose.Schema({
     sellerKey: String,
     currencyToken: String,
     assetToken: String,
+    exchangeRate: Number,
     amount: Number,
     status: String,
     isSuccessful: Boolean
