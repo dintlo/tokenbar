@@ -1,6 +1,8 @@
 
 
 
+![alt text](https://github.com/dintlo/tokenbar/blob/master/readme.png)
+
 What is TokenBar?
 
 Tokenbar is a prototype web application to be used for learning purpose. The application will be used to test various blockchain platform which will house the various tokens listed on the app.
