@@ -47,6 +47,6 @@ app.use("/assets", assetRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/users", userRoutes);
 
-app.listen(3005, function(){
+app.listen(port, function(){
     console.log("Tokenbar server has started!!!")
 })
