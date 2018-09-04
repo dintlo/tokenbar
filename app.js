@@ -16,7 +16,7 @@ var express             = require("express"),
 
 // seedDB();
 
-mongoose.connect(process.env.CUSTOMCONNSTR_MONGO_URL || database.localUrl );
+mongoose.connect("mongodb://tokenbaruser:Byxfab@001@ds243812.mlab.com:43812/tokenbar" || database.localUrl );
 
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -49,6 +49,4 @@ app.use("/assets", assetRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/users", userRoutes);
 
-app.listen(port, function(){
-    console.log("Tokenbar server has started!!!")
-})
+app.listen(process.env.PORT, process.env.IP);
