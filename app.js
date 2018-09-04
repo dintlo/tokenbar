@@ -14,7 +14,7 @@ var express             = require("express"),
     port                = process.env.PORT || 8080
     
 
-seedDB();
+// seedDB();
 
 mongoose.connect(process.env.CUSTOMCONNSTR_MONGO_URL || database.localUrl );
 
