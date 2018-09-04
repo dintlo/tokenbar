@@ -14,10 +14,11 @@ var express             = require("express"),
     port                = process.env.PORT || 8080
     
 
+
+
+mongoose.connect("mongodb://tokenbaruser:Token001@ds243812.mlab.com:43812/tokenbar" || database.localUrl );
+
 // seedDB();
-
-mongoose.connect("mongodb://tokenbaruser:Byxfab@001@ds243812.mlab.com:43812/tokenbar" || database.localUrl );
-
 
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -49,4 +50,6 @@ app.use("/assets", assetRoutes);
 app.use("/transactions", transactionRoutes);
 app.use("/users", userRoutes);
 
-app.listen(process.env.PORT, process.env.IP);
+app.listen(port, function(){
+    console.log("Tokenbar server has started!!!")
+})
