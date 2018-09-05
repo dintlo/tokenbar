@@ -11,10 +11,14 @@ var express             = require("express"),
     LocalStrategy       = require("passport-local"),
     User                = require("./models/user"),
     database            =require("./config/database"),
-    port                = process.env.PORT || 8080
+    port                = process.env.PORT || 3005
     
 
+<<<<<<< HEAD
     mongoose.connect(database.localUrl );
+=======
+    mongoose.connect( database.localUrl);
+>>>>>>> e47a020f461c607067e371859b809e24778349c6
 
 // mongoose.connect("mongodb://tokenbaruser:Token001@ds243812.mlab.com:43812/tokenbar" || database.localUrl );
 // mongoose.connect("mongodb://tokenbar.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" || database.localUrl,{
