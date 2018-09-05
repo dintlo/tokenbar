@@ -11,7 +11,7 @@ var express             = require("express"),
     LocalStrategy       = require("passport-local"),
     User                = require("./models/user"),
     database            =require("./config/database"),
-    port                = process.env.PORT || 8080
+    port                = process.env.PORT || 3005
     
 
 
