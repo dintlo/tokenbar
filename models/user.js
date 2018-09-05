@@ -3,9 +3,23 @@ var passportLocalMongoose = require("passport-local-mongoose")
 
 var UserSchema = new mongoose.Schema({
     username: String,
-    email: String,
-    country: String,
     password: String,
+    email: String,
+    firstname: String,
+    lastname: String,
+    location:{
+        country: String,
+        city: String,
+        address: String,
+        postalCode: Number
+    },
+    gallery: {
+        mainUrl: String,
+        image1: String,
+        image2: String,
+        image3: String,
+        image4: String
+    },
     wallets : [{
         id:{
             type : mongoose.Schema.Types.ObjectId,
@@ -16,37 +30,68 @@ var UserSchema = new mongoose.Schema({
         publicKey: String,
         privateKey: String,
     }],
-    assets :[{
+    myAssets :[{
+        title: String,
+    type: String,
+    description: String,
+    location: {
+        country: String,
+        city: String,
+        address: String,
+        postalCode: Number,
+    },
+    gallery: {
+        mainUrl: String,
+        image1: String,
+        image2: String,
+        image3: String,
+        image4: String
+    },
+    tokenCap: Number,
+    tokenAvail: Number,
+    token: String,
+    tokenPrice: Number,
+    transactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Transaction"
+        }
+    ],
+    creator: 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+    owners: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username,
+    ],
+    wallets : [{
         id:{
             type : mongoose.Schema.Types.ObjectId,
-            ref : "Asset"
+            ref : "Wallet"
         },
-        name: String,
-        type: String,
-        description: String,
-        location: String,
-        image: String,
-        tokenCap: Number,
-        tokenAvail: Number,
         token: String,
-        tokenPrice: Number,
-        transactions: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Transaction"
-            }
-        ],
-        wallets : [{
-            id:{
-                type : mongoose.Schema.Types.ObjectId,
-                ref : "Wallet"
-            },
-            token: String,
-            balance: Number,
-            publicKey: String,
-            privateKey: String,
-        }],
-        }]
+        balance: Number,
+        publicKey: String,
+        privateKey: String,
+    }]
+    }],
+    transactions: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Transaction"
+        }
+    ],
+    portfolio: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Asset"
+        }
+    ],
 })
 
 UserSchema.plugin(passportLocalMongoose);

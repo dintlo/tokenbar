@@ -1,7 +1,8 @@
 var Asset       = require("../models/asset"),
     Wallet      = require("../models/wallet"),
     Transaction = require("../models/transaction"),
-    User        = require("../models/user")
+    User        = require("../models/user"),
+    SHA256      = require('crypto-js/sha256')
 
 var tokenizationService = {}
 
@@ -48,7 +49,7 @@ tokenizationService.getAssetsById = function(id, callback){
 }
 
 tokenizationService.getAssetsByPublicAddress = function(address, callback){
-    Asset.find({'publicKey': address}, function(err, assets){
+    Asset.find({'transactions.publicKey': address}, function(err, assets){
         if(err){
             console.log(err);
         } else {

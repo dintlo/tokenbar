@@ -3,11 +3,22 @@ var mongoose    = require("mongoose");
 //Schema setup
 
 var assetSchema = mongoose.Schema({
-    name: String,
+    title: String,
     type: String,
     description: String,
-    location: String,
-    image: String,
+    location: {
+        country: String,
+        city: String,
+        address: String,
+        postalCode: Number,
+    },
+    gallery: {
+        mainUrl: String,
+        image1: String,
+        image2: String,
+        image3: String,
+        image4: String
+    },
     tokenCap: Number,
     tokenAvail: Number,
     token: String,
@@ -17,6 +28,18 @@ var assetSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Transaction"
         }
+    ],
+    creator: 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+    owners: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        },
+        username,
     ],
     wallets : [{
         id:{
