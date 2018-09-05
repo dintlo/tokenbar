@@ -2,17 +2,25 @@ var Asset       = require("../models/asset"),
     Wallet      = require("../models/wallet"),
     Transaction = require("../models/transaction"),
     User        = require("../models/user"),
-    SHA256      = require('crypto-js/sha256')
+    forge = require('node-forge');
 
 var tokenizationService = {}
 
 tokenizationService.createAsset = function (req) {
+    var nltkeys = generateKeys();
+    var assetkeys = generateKeys();
+
     var newAsset = {
-        name: req.body.name, 
+        title: req.body.title, 
         type: req.body.type, 
-        location: req.body.location, 
+        location:{
+            country: req.body.country,
+            city: req.body.city
+        }, 
+        gallery:{
+            mainUrl: req.body.mainUrl
+        },
         description:req.body.description, 
-        image: req.body.image,
         tokenAvail: req.body.tokenCap,
         token: req.body.token, 
         tokenCap: req.body.tokenCap, 
@@ -20,17 +28,35 @@ tokenizationService.createAsset = function (req) {
         wallets:[{
             token: req.body.token,
             balance: req.body.tokenCap,
-            publicKey: "12121212120",
-            privateKey: "2121212120",
+            publicKey: assetkeys.public,
+            privateKey: assetkeys.private,
         },
         {
             token: "NLT",
             balance: 0,
-            publicKey: "12121212121",
-            privateKey: "212121212121",
-        }]
+            publicKey: nltkeys.public,
+            privateKey: nltkeys.private,
+        }],
+        creator: {
+            id:req.user.id
+        }
     };
-    return newAsset;
+    Asset.create(newAsset, function(err, newlyAsset){
+        if(err){
+            console.log(err);
+        } else {
+            
+            var updatedUser = req.user.myassets.push(newlyAsset);
+            User.findByIdAndUpdate(req.user._id,updatedUser, function(err, newUser){
+                if(err){
+                    console.log(err);
+                } else {
+                    return newlyAsset;
+                }
+            })
+        }
+    })
+    
 }
 
 tokenizationService.getAssetsById = function(id, callback){
@@ -57,6 +83,24 @@ tokenizationService.getAssetsByPublicAddress = function(address, callback){
         }
     })
 }
+
+function generateKeys () {
+    var keypair = forge.rsa.generateKeyPair({bits: 1024});
+
+keypair = {
+    public: fix(forge.pki.publicKeyToRSAPublicKeyPem(keypair.publicKey, 72)),
+    private: fix(forge.pki.privateKeyToPem(keypair.privateKey, 72))
+  }
+
+
+return keypair;
+}
+
+function fix (str) {
+    var r = str.replace('-----BEGIN RSA PUBLIC KEY-----','');
+    return r.replace('-----END RSA PUBLIC KEY-----','')
+}
+
 
 
 

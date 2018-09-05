@@ -3,22 +3,21 @@
 <section id="show-section">
     <div class="main container">
         <div class="row">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-6">
                 <div class="heading">
-                    <h1><%= asset.name%></h1>
+                    <h1><%= asset.title%></h1>
                 </div>
             
-                <div class="image" style="background-image:url('<%=asset.image%>'); height: 450px; background-position: center; background-size: fit; background-repeat: no-repeat;"></div>
+                <div class="image" style="background-image:url('<%=asset.gallery.mainUrl%>'); height: 450px; background-position: center; background-size: fit; background-repeat: no-repeat;"></div>
             
                 <div style="margin-top:50px;">
                     
                     <h3 style="margin-bottom: 20px;"><%= asset.description%></h3>
                     <p style="text-align: left;">Nam a ultrices mauris. Nam efficitur, lorem a vehicula interdum, ligula velit euismod lorem, vitae vehicula ligula tortor eu leo. Maecenas porttitor massa ut vestibulum euismod. Aliquam eget mi aliquam.</p>
                     <p style="text-align: left;">Lorem ipsum dapibus dolor non, malesuada mauris. Aliquam eleifend mauris non odio mattis auctor. Aenean sit amet elementum tellus, a facilisis ligula. Pellentesque ac vehicula mauris.</p>
-                    <a style="justify-content:center;width:50%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-success">Purchase</a>
                 </div>
             </div>
-            <div style="text-align: left; margin-left: 130px; margin-top:60px;" class="col-12 col-md-3 tags">
+            <div style="text-align: left; margin-left: 130px; margin-top:25px; border-style:solid; border-width:0.3px;" class="col-12 col-md-3">
                 <h5 style="text-align:center;">Asset Metrics</h5>
                 <table class="table table-striped">
                     <tbody>
@@ -28,7 +27,7 @@
                         </tr>
 
                         <tr>
-                        <th scope="row">Token Price:</th>
+                        <th scope="row">Token Price [NLT]:</th>
                         <td><%=asset.tokenPrice%></td>
                         </tr>
 
@@ -54,17 +53,19 @@
                             <td><%=wallet.balance%></td>
                             </tr>
                             <tr>
-                            <th scope="row">Public key:</th>
+                            <!-- <th scope="row">Public key:</th>
                             <td><%=wallet.publicKey%></td>
                             </tr>
                             <tr>
                             <th scope="row">Private key:</th>
                             <td><%=wallet.privateKey%></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 <%});%>
-               
+                <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-primary">Purchase</a>
+                <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-dark">Monitor</a>
+
             </div>  
         </div>
        

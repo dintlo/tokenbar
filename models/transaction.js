@@ -5,18 +5,18 @@ var mongoose    = require("mongoose");
 var transactionSchema = mongoose.Schema({
     buyerKey: String,
     sellerKey: String,
-    buyer: [
+    buyer: 
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
-    ],
-    asset: [
+    ,
+    asset: 
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Asset"
         }
-    ],
+    ,
     currencyToken: String,
     assetToken: String,
     exchangeRate: Number,

@@ -21,7 +21,7 @@
                 </tbody>
             </table>
 
-            <h1 style="text-align:center;">Wallets</h1>
+            <h1 style="text-align:left;">Wallets</h1>
             <% currentUser.wallets.forEach(function(wallet){ %>
                 
                 <table class="table table-striped">
@@ -34,14 +34,14 @@
                         <th scope="row">Balance:</th>
                         <td><%=wallet.balance%></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                         <th scope="row">Public key:</th>
                         <td><%=wallet.publicKey%></td>
                         </tr>
                         <tr>
                         <th scope="row">Private key:</th>
                         <td><%=wallet.privateKey%></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             <%});%>

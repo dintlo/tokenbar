@@ -6,25 +6,30 @@
         <div class="col-12 col-md-6" style="margin:auto; text-align: left;" >
             <form action="/assets" method="post">
                 <div class="form-group">
-                    <label for="name">Asset Name</label>
-                    <input id="name" class="form-control" type="text" name="name" placeholder="Asset Name">
+                    <label for="title">Asset Title</label>
+                    <input id="title" class="form-control" type="text" name="title" placeholder="Asset Title">
                 </div>
                 <div class="form-group">
                     <label for="type">Asset Type</label>
-                    <input class="form-control" id="type" type="text" name="type" placeholder="Asset Type">
+                    <input class="form-control" id="type" type="text" name="type" placeholder="eg real estate">
                 </div>
                 <div class="form-group">
-                    <label for="location">Country</label>
-                    <input class="form-control" id="location" type="text" name="location" placeholder="Asset Location">
+                    <label for="country">Country</label>
+                    <input class="form-control" id="country" type="text" name="country" placeholder="Country">
+                </div>
+                <div class="form-group">
+                    <label for="city">Country</label>
+                    <input class="form-control" id="city" type="text" name="city" placeholder="City">
                 </div>
                 <div class="form-group">
                     <label for="token">Token Name</label>
                     <input class="form-control" id="token" type="text" name="token" placeholder="Asset token name">
                 </div>
                 <div class="form-group">
-                    <label for="tokanCap">Token Cap</label>
-                    <input class="form-control" id="tokanCap" type="text" name="tokenCap" placeholder="Asset tokan Cap">
+                    <label for="tokenCap">Token Cap</label>
+                    <input class="form-control" id="tokenCap" type="text" name="tokenCap" placeholder="Asset token Cap">
                 </div>
+            
                 <div class="form-group">
                     <label for="tokenPrice">Token Price</label>
                     <input class="form-control" id="tokenPrice" type="text" name="tokenPrice" placeholder="Asset token price">
@@ -34,8 +39,8 @@
                     <textarea rows="5" class="form-control" id="description" name="description" placeholder="Asset Description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="image">Image Url</label>
-                    <input class="form-control" id="image" type="text" name="image" placeholder="Asset Image">
+                    <label for="mainUrl">Image Url</label>
+                    <input class="form-control" id="mainUrl" type="text" name="mainUrl" placeholder="Profile Picture">
                 </div>
                 <div class="form-group">
                     <button class="form-control btn-dark" type="submit">Submit</button>

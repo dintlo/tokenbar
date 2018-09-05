@@ -6,7 +6,8 @@ var express     = require("express"),
     Wallet      = require("../models/wallet"),
     Transaction = require("../models/transaction"),
     middlewareObj = require("../middleware/middleware"),
-    tokenizationService = require("../services/tokenization")
+    tokenizationService = require("../services/tokenization"),
+    forge = require('node-forge');
 
 
 //Show register form
@@ -16,17 +17,19 @@ router.get("/register", function(req, res){
 
 //Register a new user
 router.post("/register", function(req, res){
-    
+    var nltkeys = generateKeys();
     var newNativeWallet = {
         token: "NLT",
         balance: 100,
-        publicKey:  "12121212121212121212",
-        privateKey: "21212121212121212121"
+        publicKey:  nltkeys.public,
+        privateKey: nltkeys.private
     }
     var newUser = new User({
         username: req.body.username,
         email: req.body.email,
-        country: req.body.country
+        location: {
+            country:req.body.country
+        }
     });
     newUser.wallets.push(newNativeWallet);
 
@@ -92,5 +95,20 @@ router.get("/portfolio", function(req, res){
     res.render("users/portfolio", {assets:portfolio})
 });
 
+function generateKeys () {
+    var keypair = forge.rsa.generateKeyPair({bits: 1024});
 
+keypair = {
+    public: fix(forge.pki.publicKeyToRSAPublicKeyPem(keypair.publicKey, 72)),
+    private: fix(forge.pki.privateKeyToPem(keypair.privateKey, 72))
+  }
+
+
+return keypair;
+}
+
+function fix (str) {
+    var r = str.replace('-----BEGIN RSA PUBLIC KEY-----','');
+    return r.replace('-----END RSA PUBLIC KEY-----','')
+}
 module.exports = router;

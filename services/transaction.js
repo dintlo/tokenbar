@@ -1,7 +1,8 @@
 var Asset       = require("../models/asset"),
     Wallet      = require("../models/wallet"),
     Transaction = require("../models/transaction"),
-    User        = require("../models/user")
+    User        = require("../models/user"),
+    forge = require('node-forge');
 
 //create default values for transcation
 var newTransaction = {
@@ -10,9 +11,12 @@ var newTransaction = {
     currencyToken: "",
     assetToken: "",
     exchangeRate: 0,
-    amount: 0,
+    currencyAmount: 0,
+    assetAmount: 0,
     status: "",
     isSuccessful: false,
+    buyer: {},
+    asset:{}
 };
 
 var transactionService = {}
@@ -21,16 +25,6 @@ var transactionService = {}
 transactionService.createTransaction = function (req, callback) {
         
         //craeate default values for transcation
-        newTransaction = {
-            buyerKey: "",
-            sellerKey: "",
-            currencyToken: req.body.currencyToken,
-            assetToken: req.body.token,
-            exchangeRate: req.body.tokenPrice,
-            amount: Number(req.body.amount),
-            status: "Transaction failed.",
-            isSuccessful: false,
-        };
         
         var userHasWallet = false;
 
@@ -39,6 +33,20 @@ transactionService.createTransaction = function (req, callback) {
                 console.log(err);
             } else {
 
+                newTransaction = {
+                    buyerKey: "",
+                    sellerKey: "",
+                    currencyToken: req.body.currencyToken,
+                    assetToken: req.body.token,
+                    exchangeRate: req.body.tokenPrice,
+                    currencyAmount: Number(req.body.amount),
+                    assetAmount:Number(req.body.amount)/req.body.tokenPrice,
+                    status: "Transaction failed.",
+                    isSuccessful: false,
+                    buyer:req.user,
+                    asset:asset
+                };
+                
                 //check if user already has a wallet for asset token
                 req.user.wallets.forEach(wallet => {
                     if(wallet.token==asset.token){
@@ -47,21 +55,22 @@ transactionService.createTransaction = function (req, callback) {
                 });
                 //create a wallet for the user compatible the asset token they want to buy.
                 if(!userHasWallet){
+                    var assetKeys = generateKeys();
                     req.user.wallets.push(
                         {
                             token: asset.token,
-                            publicKey: "3428349328479832",
-                            privateKey: "980239840932840932",
+                            publicKey: assetKeys.public,
+                            privateKey: assetKeys.private,
                             balance: 0,
                         }
                     );
                 }
                
                 //update both asset and user wallets
-                assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.amount, newTransaction.assetToken, function(){
-                    userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.amount, newTransaction.assetToken, function(){
+                assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetToken, function(){
+                    userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetToken, function(){
                     
-                        asset.tokenAvail = asset.tokenAvail - newTransaction.amount;
+                        asset.tokenAvail = asset.tokenAvail - newTransaction.currencyAmount;
                         User.findOneAndUpdate({_id: req.user._id},req.user, function(err, newUser){
                             if(err){
                                 console.log(err);
@@ -131,5 +140,22 @@ getUserTransaction = function(id, callback){
             callback(foundTransactions);
         }
     })
+}
+
+function generateKeys () {
+    var keypair = forge.rsa.generateKeyPair({bits: 1024});
+
+keypair = {
+    public: fix(forge.pki.publicKeyToRSAPublicKeyPem(keypair.publicKey, 72)),
+    private: fix(forge.pki.privateKeyToPem(keypair.privateKey, 72))
+  }
+
+
+return keypair;
+}
+
+function fix (str) {
+    var r = str.replace('-----BEGIN RSA PUBLIC KEY-----','');
+    return r.replace('-----END RSA PUBLIC KEY-----','')
 }
 module.exports = transactionService;

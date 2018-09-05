@@ -13,7 +13,6 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(assets)
             res.render("assets/index", {assets:assets});
         }
     })
@@ -22,22 +21,7 @@ router.get("/", function(req, res){
 //Asset:Post
 router.post("/",middlewareObj.isLoggedIn, function(req, res){
     var newAsset = tokenizationService.createAsset(req)
-    
-    Asset.create(newAsset, function(err, newlyAsset){
-        if(err){
-            console.log(err);
-        } else {
-            
-            var updatedUser = req.user.assets.push(newlyAsset);
-            User.findByIdAndUpdate(req.user._id,updatedUser, function(err, newUser){
-                if(err){
-                    console.log(err);
-                } else {
-                    res.redirect("/assets");
-                }
-            })
-        }
-    })
+    res.redirect("/assets/"+newAsset.id);
 });
 
 //Asset:New
