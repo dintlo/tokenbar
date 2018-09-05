@@ -29,18 +29,19 @@ var assetSchema = mongoose.Schema({
             ref: "Transaction"
         }
     ],
-    creator: 
-        {
+    creator: {
+        id:{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    },
+    owners: [{
+        id:{
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-    owners: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        },
-        username,
-    ],
+        username: String,
+    }],
     wallets : [{
         id:{
             type : mongoose.Schema.Types.ObjectId,

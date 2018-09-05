@@ -6,7 +6,10 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   background-position:50%;
   background-size:cover;
 }
-
+.main {
+  margin-top: 70px;
+  text-align: center;
+}
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
