@@ -21,7 +21,7 @@ router.get("/", function(req, res){
 //Asset:Post
 router.post("/",middlewareObj.isLoggedIn, function(req, res){
     var newAsset = tokenizationService.createAsset(req)
-    res.redirect("/assets/"+newAsset.id);
+    res.redirect("/assets");
 });
 
 //Asset:New
