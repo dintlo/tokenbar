@@ -26,6 +26,7 @@ mongoose.connect("mongodb://tokenbar.documents.azure.com:10255/?ssl=true&replica
     });
 
  seedDB();
+ 
 
 app.use(bodyParser.urlencoded({extended:true}));
 
