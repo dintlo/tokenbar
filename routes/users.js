@@ -85,14 +85,18 @@ router.get("/myassets", function(req, res){
 
 //See your asset portfolio
 router.get("/portfolio", function(req, res){
-    var portfolio;
-    req.user.wallets.array.forEach(wallet => {
-        tokenizationService.getAssetsByPublicAddress(wallet.publicKey, function(assets){
-            portfolio.push(assets);
-        })
-    });
+    // var portfolio;
+    // req.user.wallets.array.forEach(wallet => {
+    //     tokenizationService.getAssetsByPublicAddress(wallet.publicKey, function(assets){
+    //         portfolio.push(assets);
+    //     })
+    // });
     
-    res.render("users/portfolio", {assets:portfolio})
+    Asset.find({_id:req.user.portfolio}, function(err, assets){
+        console.log(assets);
+        res.render("users/portfolio", {assets:assets})
+    })
+   
 });
 
 function generateKeys () {

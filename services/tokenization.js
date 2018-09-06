@@ -46,7 +46,7 @@ tokenizationService.createAsset = function (req) {
             console.log(err);
         } else {
             
-            var updatedUser = req.user.myassets.push(newlyAsset);
+            var updatedUser = req.user.myAssets.push(newlyAsset);
             User.findByIdAndUpdate(req.user._id,updatedUser, function(err, newUser){
                 if(err){
                     console.log(err);

@@ -1,24 +1,24 @@
 html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
   text-align:center;
   color:#fff;
   background-repeat:no-repeat;
   background-attachment:scroll;
   background-position:50%;
   background-size:cover;
+
 }
 .main {
   margin-top: 70px;
+  margin-bottom: 0px;
   text-align: center;
-}
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-}
-
-body {
+  height: 100%;
 }
 
 header.masterhead {
@@ -59,7 +59,7 @@ header.masterhead {
   margin-top:50px;
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, header, hgroup, main, nav, section {
   color:#343a40;
 }
 
@@ -113,6 +113,7 @@ img {
   justify-content: center;
   margin-top:50px;
   padding-top:25px;
+ 
 }
 
 #about-container.container, #form-container.container {
@@ -130,37 +131,33 @@ img {
 
 #show-section{
   padding-bottom: 100px;
-padding-top: 100px;
+  padding-top: 100px;
 }
 
 #show-section.row {
   display: flex;
--ms-flex-wrap: wrap;
-flex-wrap: wrap;
-margin-right: -15px;
-margin-left: -15px;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .tags{
   display: -ms-flexbox;
-display: flex;
--ms-flex-direction: column;
-flex-direction: column;
-color: #333;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #333;
 }
 
 .tags.meta-heading{
   color: #22245b;
-margin-bottom: 5px;
-font-weight: 700;
+  margin-bottom: 5px;
+  font-weight: 700;
 }
 
 .tags.span{
   color: #979797;
-}
-
-nav.scroll {
-  background-color: #A1572F;
 }
 
 #portforlio img{
@@ -168,3 +165,9 @@ nav.scroll {
   height: 50%;
 }
 
+footer{
+  text-align: center;
+  color:white;
+  width:100%;
+  background:#343a40;
+}

@@ -1,25 +1,21 @@
 <% include ../partials/header %>
 
 <h1>This is the assets page.</h1>
-
-<div  class="projects-clean">
-        <div class="main container">
-            <div class="intro">
-                <h2 class="text-center">Assets</h2>
-                <p class="text-center">Browse through our hundreds of Assets which have been tokenized.</p>
+    <div class="main container">
+        <div class="intro">
+            <h2 class="text-center">Assets</h2>
+            <p class="text-center">Browse through our hundreds of Assets which have been tokenized.</p>
+        </div>
+        <div class="row row-sm-12" >
+            <% assets.forEach(function(asset){ %>  
+            <div class="col-sm-6 col-md-4 item" >
+                <a style="text-decoration: none; color: #333" href="/assets/<%=asset._id%>">
+                    <img class="img-fluid" src="<%= asset.gallery.mainUrl %>" />
+                    <h3 class="name"><%= asset.title%></h3>
+                    <p class="description"><%= asset.description%></p>
+                </a>  
             </div>
-            <div class="row row-sm-12" >
-                <% assets.forEach(function(asset){ %>  
-                <div class="col-sm-6 col-md-4 item" >
-                    <a style="text-decoration: none; color: #333" href="/assets/<%=asset._id%>">
-                        <img class="img-fluid" src="<%= asset.gallery.mainUrl %>" />
-                        <h3 class="name"><%= asset.title%></h3>
-                        <p class="description"><%= asset.description%></p>
-                    </a>  
-                </div>
-                <% }); %>
-            </div>
+            <% }); %>
         </div>
     </div>
-
 <% include ../partials/footer %>

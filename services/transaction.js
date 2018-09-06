@@ -71,6 +71,8 @@ transactionService.createTransaction = function (req, callback) {
                     userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetToken, function(){
                     
                         asset.tokenAvail = asset.tokenAvail - newTransaction.currencyAmount;
+                        asset.owners.push(req.user);
+                        req.user.portfolio.push(asset);
                         User.findOneAndUpdate({_id: req.user._id},req.user, function(err, newUser){
                             if(err){
                                 console.log(err);
