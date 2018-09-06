@@ -20,7 +20,8 @@ tokenizationService.createAsset = function (req) {
         gallery:{
             mainUrl: req.body.mainUrl
         },
-        description:req.body.description, 
+        description:req.body.description,
+        detailedDescription: req.body.detailedDescription, 
         tokenAvail: req.body.tokenCap,
         token: req.body.token, 
         tokenCap: req.body.tokenCap, 

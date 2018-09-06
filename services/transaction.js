@@ -39,8 +39,8 @@ transactionService.createTransaction = function (req, callback) {
                     currencyToken: req.body.currencyToken,
                     assetToken: req.body.token,
                     exchangeRate: req.body.tokenPrice,
-                    currencyAmount: Number(req.body.amount),
-                    assetAmount:Number(req.body.amount)/req.body.tokenPrice,
+                    currencyAmount:Number(req.body.amount)/req.body.tokenPrice,
+                    assetAmount:Number(req.body.amount),
                     status: "Transaction failed.",
                     isSuccessful: false,
                     buyer:req.user,
@@ -67,8 +67,8 @@ transactionService.createTransaction = function (req, callback) {
                 }
                
                 //update both asset and user wallets
-                assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetToken, function(){
-                    userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetToken, function(){
+                assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetAmount, newTransaction.assetToken, function(){
+                    userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetAmount, newTransaction.assetToken, function(){
                     
                         asset.tokenAvail = asset.tokenAvail - newTransaction.currencyAmount;
                         asset.owners.push(req.user);
@@ -96,18 +96,18 @@ transactionService.createTransaction = function (req, callback) {
         });   
 }
 
-assetTransfer = function(assetWallets, price, amount, token, callback){
+assetTransfer = function(assetWallets, price, currencyAmount, assetAmount, token, callback){
     //move funds from/to user wallet
     var itemprocessed = 0;
     assetWallets.forEach((item, index, array) =>{
         itemprocessed++;
         
         if(item.token=="NLT"){
-            item.balance = item.balance + amount/price;
+            item.balance = item.balance + currencyAmount;
         }
         if(item.token==token){
             newTransaction.sellerKey = item.publicKey;
-            item.balance = item.balance - amount;
+            item.balance = item.balance - assetAmount;
         }
         if(itemprocessed == array.length){
             callback();
@@ -115,18 +115,18 @@ assetTransfer = function(assetWallets, price, amount, token, callback){
     });
 };
 
-userTransfer = function( userWallets, price, amount, token, callback){
+userTransfer = function( userWallets, price, currencyAmount, assetAmount, token, callback){
     //move funds from/to user wallet
     var itemprocessed = 0;
     userWallets.forEach((item, index, array) =>{
         itemprocessed ++;
 
         if(item.token=="NLT"){
-            item.balance = item.balance - amount/price;
+            item.balance = item.balance - currencyAmount;
         }
         if(item.token==token){
             newTransaction.buyerKey = item.publicKey;
-            item.balance = item.balance + amount;
+            item.balance = item.balance + assetAmount;
         }
         if(itemprocessed == array.length){
             callback();

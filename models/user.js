@@ -34,6 +34,7 @@ var UserSchema = new mongoose.Schema({
         title: String,
     type: String,
     description: String,
+    detailedDescription: String,
     location: {
         country: String,
         city: String,

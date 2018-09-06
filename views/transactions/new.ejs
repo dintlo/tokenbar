@@ -24,8 +24,12 @@
                     <input id="tokenPrice" class="form-control" name="tokenPrice" type="text" readonly value="<%=asset.tokenPrice%>" >
                 </div>
                 <div class="form-group">
-                    <label for="amount">Your purchase ammount in: <b><%=asset.token%></b></label>
-                    <input class="form-control" type="text" name="amount" placeholder="amount">
+                    <label for="currencyAmount">Amount in NLT</label>
+                    <input id="currencyAmount" class="form-control" type="text" name="currencyAmount" readonly >
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount in <b><%=asset.token%></b></label>
+                    <input class="form-control" id="amount" onkeyup="exchangeConversion(this.value)" type="text" name="amount" placeholder="amount">
                 </div>
                 <div class="form-group">
                     <button class="form-control btn-dark" type="submit">Submit</button>
@@ -34,7 +38,7 @@
 
             </form>
         </div>
-        <div  class="col-12 col-md-4">
+        <div style="padding:0;" class="col-12 col-md-3">
             <h5 style="text-align:center;">Your Wallets</h5>
             <% currentUser.wallets.forEach(function(wallet){ %>
                 <table style="text-align:left;" class="table table-striped">
