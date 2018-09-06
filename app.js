@@ -17,15 +17,15 @@ var express             = require("express"),
 mongoose.connect(database.localUrl);
 
 // mongoose.connect("mongodb://tokenbaruser:Token001@ds243812.mlab.com:43812/tokenbar" || database.localUrl );
-// mongoose.connect("mongodb://tokenbar.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" || database.localUrl,{
-//     auth:{  
-//         user:"tokenbar",
-//         password:"IcLSCWlDrDdIA4AXz4aamdOcixvL8rOLbHzvGWnRq4sRsUMj1ad33REFpRyFAt7TncWzMWmPlyhMs5nxo5w62A==",
-//     }}, function(err, db){
+mongoose.connect("mongodb://tokenbar.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" || database.localUrl,{
+    auth:{  
+        user:"tokenbar",
+        password:"IcLSCWlDrDdIA4AXz4aamdOcixvL8rOLbHzvGWnRq4sRsUMj1ad33REFpRyFAt7TncWzMWmPlyhMs5nxo5w62A==",
+    }}, function(err, db){
         
-//     });
+    });
 
-//  seedDB();
+ seedDB();
 
 app.use(bodyParser.urlencoded({extended:true}));
 
