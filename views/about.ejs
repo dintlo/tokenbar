@@ -1,9 +1,9 @@
 <% include partials/header %>
-
+<section id="question-section">
     <div class="main">
 
         <div id="about-container" class="container">
-            <section id="question-section">
+           
                 <div class="container" id="question-container">
                     <h2 id="question-heading">Project Vision</h2>
                     <hr />
@@ -27,16 +27,30 @@
                 </div>
 
                 <div class="container" id="question-container">
-                    <h2 id="question-heading">Blockchain Development approach</h2>
+                    <h2 id="question-heading">Blockchain Approach</h2>
                     <hr />
                     <p style="text-align: left;">
-                        The goal of the project to be as open as possible and not be fixated on a specific blockchain. Thus the aim is to build upon
-                        all major blockchains as this also provides a great learning opportunity for project members to get
-                        development exposure on each platform.
+                        Due to the fast changing blockchain protocol landscape, the goal of the project to be as open as possible and not be fixated
+                        on a specific blockchain. Thus the aim is to build upon all major blockchains. This also provides
+                        a great learning opportunity for project members to get development exposure on each platform. So
+                        far the current consensus in the team is to focus on the following major platforms:
+
                     </p>
+                    <div class="row" style="padding:15px;" id="blockchains">
+                        <div class="col-12 col-md-4">
+                            <img src="/assets/img/ethereum.png" class="img-fluid" />
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <img src="/assets/img/eos.jpg" class="img-fluid">
+                        </div> 
+                        <div class="col-12 col-md-4">
+                            <img src="/assets/img/neo.png" class="img-fluid">
+                        </div> 
+                    </div>
+                    
                 </div>
-            </section>
+           
         </div>
-
-
-        <% include partials/footer %>
+    </div>
+</section>
+    <% include partials/footer %>
