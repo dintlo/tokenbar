@@ -70,7 +70,7 @@ transactionService.createTransaction = function (req, callback) {
                 assetTransfer(asset.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetAmount, newTransaction.assetToken, function(){
                     userTransfer(req.user.wallets, newTransaction.exchangeRate, newTransaction.currencyAmount, newTransaction.assetAmount, newTransaction.assetToken, function(){
                     
-                        asset.tokenAvail = asset.tokenAvail - newTransaction.currencyAmount;
+                        asset.tokenAvail = asset.tokenAvail - newTransaction.assetAmount;
                         asset.owners.push(req.user);
                         req.user.portfolio.push(asset);
                         User.findOneAndUpdate({_id: req.user._id},req.user, function(err, newUser){

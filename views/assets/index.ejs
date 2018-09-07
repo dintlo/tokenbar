@@ -1,10 +1,12 @@
 <% include ../partials/header %>
+<section>
+
 
 <h1>This is the assets page.</h1>
     <div class="main container">
         <div class="intro">
             <h2 class="text-center">Assets</h2>
-            <p class="text-center">Browse through our hundreds of Assets which have been tokenized.</p>
+            <p class="text-center"></p>
         </div>
         <div class="row row-sm-12" >
             <% assets.forEach(function(asset){ %>  
@@ -12,10 +14,14 @@
                 <a style="text-decoration: none; color: #333" href="/assets/<%=asset._id%>">
                     <img class="img-fluid" src="<%= asset.gallery.mainUrl %>" />
                     <h3 class="name"><%= asset.title%></h3>
-                    <p class="description"><%= asset.description%></p>
+                    <h5 class="description"><%= asset.description%></h5>
+                    <%if(asset.owners.length>0){%>
+                        <p style="text-align:left; font-size:10;"><%=asset.owners.length%> Buyers</p>
+                    <%}%>
                 </a>  
             </div>
             <% }); %>
         </div>
     </div>
+</section>
 <% include ../partials/footer %>

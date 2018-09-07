@@ -1,8 +1,9 @@
 <% include ../partials/header %>
+<section>
 
 <h1>My Assets</h1>
 
-        <div class="main">
+        <div class="main container">
             <div class="intro">
                 <h2 class="text-center">My Portfolio</h2>
             </div>
@@ -13,11 +14,40 @@
                         <img class="img-fluid" src="<%= asset.gallery.mainUrl %>" />
                         <h3 class="name"><%= asset.title%></h3>
                         <p class="description"><%= asset.description%></p>
+                        
                     </a>  
+                    <table  style="text-align:left; padding: 0;" class="table table-striped">
+                            <tbody>
+
+                                
+                    <% currentUser.wallets.forEach(function(wallet){%>
+                        <%if(wallet.token==asset.token){%>
+                            <tr>
+                                <th scope="row">Your Stake:
+                                    
+                                </th>
+                                <td><%=parseFloat(Math.round((wallet.balance/asset.tokenCap) * 100)).toFixed(2)%>% [
+                                    <%=wallet.balance%>
+                                        <%=wallet.token%> tokens] of this asset. </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Asset availability:</th>
+                                <td>
+                                    <%=parseFloat(Math.round((asset.tokenAvail/asset.tokenCap) * 100)).toFixed(2)%> % of tokens still Available
+                                </td>
+                            </tr>
+                       
+                        <%}%>
+                        
+
+                        <%})%> 
+                        </tbody>
+                    </table>
                 </div>
                 <% }); %>
             </div>
         </div>
   
-
+    
+    </section>
 <% include ../partials/footer %>
