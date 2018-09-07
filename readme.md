@@ -3,25 +3,25 @@
 
 ![alt text](https://github.com/dintlo/tokenbar/blob/master/readme.png)
 
+Visit the site live in development:
+https://tokenbar.azurewebsites.net
+
 What is TokenBar?
 
 Tokenbar is a prototype web application to be used for learning purpose. The application will be used to test various blockchain platform which will house the various tokens listed on the app.
 
-What is an Asset Token?
+Project Vision
+The emergence of the blockchain technology has given rise to many use cases which have gret potential to revolutionise many industries. One of the most lucrative and appealing uses cases is the ability of to tokenize real world assets and make them available to people to extract more economic value than before. The goal of this project is to this through the cration of an virtual e-commerce site that mimics the future potential that this technology will will offer once it has reached maturity. The goal of this project is to expose more poeple to the potential of blockchain by giving them a real use case platform which allow them to buy and trade tokenized assets.
 
-An Asset token is a digital value created on the blockchain to represent the value of a real world asset. Ownershp of this token gives enables access to certain utility and security rights associated to the asset.
+Project Team
+The current team is made of various blockchain enthuisiasts who are passionate the blockchain and about pushing towards more adoption through creation of practical use cases for blockchain.
 
-How do you purchase an Asset Token?
+Blockchain Approach
+Due to the fast changing blockchain protocol landscape, the goal of the project to be as open as possible and not be fixated on a specific blockchain. Thus the aim is to build upon all major blockchains. This also provides a great learning opportunity for project members to get development exposure on each platform. So far the current consensus in the team is to focus on the following major platforms:
 
-Once you find an Asseet that you like, you will be presented a breakdown of the Asset Metrics. This will highlight the price of an individual Asset Token, along with how many are avaiable. Upon selecting the purchase option you will be taken to the transation page where you can specifiy how many of the asset tokens you want along with the associated price.
+- Ethereum
+- EOS
+- NEO
 
-How do i know if an Asset is real and not fake?
-
-Every asset listed on TokenBar undergoes strict valuation and verification checks before being listed. Furthermore each asset Owner has to produce frequent verification and valudation reports regarding their asset in order for their asset to remain listed.
-
-How do i list an a new Asset?
-
-In order to list a new asset on Tokenbar you will need to submit a proposal where you detail as much information about the asset.
-Following this our team will review and get back to you to initiate the tokenization process. This process will involved a verification and valudation of your asset. Once this is done your asset will be tokenized on the blockchain and made available for users to buy.
 
 
