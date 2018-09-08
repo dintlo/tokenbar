@@ -1,9 +1,17 @@
 var express     = require("express"),
-    router      = express.Router();
+    router      = express.Router(),
+    Asset       = require("../models/asset")
 
 //Landing
 router.get("/", function(req, res){
-    res.render("landing");
+    Asset.find({}, function(err, assets){
+        if(err){
+            console.log(err);
+        } else {
+            
+            res.render("landing", {assets:assets.slice(0,3)});
+        }
+    })
 });
 
 //about
