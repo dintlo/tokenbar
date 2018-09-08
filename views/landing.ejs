@@ -28,7 +28,9 @@
                         <li role="presentation" class="nav-item"><a href="/users/register" class="nav-link active">Register</a></li>
                         <%} else {%>
                             <li role="presentation" class="nav-item"><a href="/assets" class="nav-link active">Explore</a></li>
-                            <li role="presentation" class="nav-item"><a href="/assets/new" class="nav-link active">Create</a></li>
+                            <%if(currentUser.username=='fabrice'){%>
+                                <li role="presentation" class="nav-item"><a href="/assets/new" class="nav-link active">Create</a></li>
+                                <%}%>
                             <li role="presentation" class="nav-item"><a href="/about" class="nav-link active">About</a></li>
                             <!-- <li role="presentation" class="nav-item"><a href="/users/myassets" class="nav-link active">My  </a></li>-->
                             <li role="presentation" class="nav-item"><a href="/users/portfolio" class="nav-link active">Portfolio</a></li>
