@@ -88,7 +88,10 @@
                 <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-primary">Purchase</a>
 
                 <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="#" class="btn btn-lg btn-dark">Trade</a>
-
+                
+                <%if(currentUser._id=asset.creator.id){%>
+                    <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="/assets/<%=asset._id%>/edit" class="btn btn-lg btn-dark">Edit</a>
+                <%}%>
             </div>  
         </div>    
         </div>

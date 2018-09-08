@@ -24,9 +24,34 @@ router.post("/",middlewareObj.isLoggedIn, function(req, res){
     res.redirect("/assets");
 });
 
+//Asset:Put
+router.put("/:id", middlewareObj.isAssetCreator, function(req, res){
+    Asset.findByIdAndUpdate(req.params.id, req.body.asset, function(err, updatedAsset){
+        if(err){
+            console.log(err);
+            res.redirect("/assets")
+        } else {
+            res.redirect("/assets/" + req.params.id);
+        }
+    })
+    
+})
 //Asset:New
 router.get("/new",middlewareObj.isLoggedIn, function(req, res){
     res.render("assets/new");
+})
+
+//Asset:edit
+router.get("/:id/edit",middlewareObj.isAssetCreator, function(req, res){
+    Asset.findById(req.params.id, function(err,foundAsset){
+        if(err) {
+            console.log(err)
+            res.redirect("/assets")
+        } else{
+            res.render("assets/edit", {asset : foundAsset});
+        }
+    })
+    
 })
 
 //Asset:Show

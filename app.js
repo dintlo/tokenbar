@@ -11,6 +11,7 @@ var express             = require("express"),
     LocalStrategy       = require("passport-local"),
     User                = require("./models/user"),
     database            =require("./config/database"),
+    methodOverride      = require("method-override"),
     port                = process.env.PORT || 8080
     
 
@@ -33,6 +34,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
+
+app.use(methodOverride("_method"));
 
 //Configure Passport
 app.use(require("express-session")({

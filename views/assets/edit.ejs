@@ -1,0 +1,72 @@
+<% include ../partials/header %></div>
+<section>
+
+
+<div class="main">
+        <h1 style="margin:25px;">Create new asset</h1>
+    
+        <div class="col-12 col-md-6 " style="margin:auto; text-align: left;" >
+            <form action="/assets/<%=asset._id%>?_method=PUT" method="post">
+                <div class="form-group">
+                    <label for="title">Asset Title</label>
+                    <input id="title" class="form-control" value="<%=asset.title%>" type="text" name="title" placeholder="Asset Title">
+                </div>
+                <div class="form-group">
+                    <label for="type">Asset Type</label>
+                    <input class="form-control" id="type" value="<%=asset.type%>" type="text" name="type" placeholder="eg real estate">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input class="form-control" id="country" value="<%=asset.location.country%>" type="text" name="country" placeholder="Country">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input class="form-control" id="city" type="text" value="<%=asset.location.city%>" name="city" placeholder="City">
+                </div>
+                <div class="form-group">
+                    <label for="token">Token Name</label>
+                    <input class="form-control" id="token" type="text" value="<%=asset.token%>" name="token" placeholder="Asset token name">
+                </div>
+                <div class="form-group">
+                    <label for="tokenCap">Token Cap</label>
+                    <input class="form-control" id="tokenCap" type="text" value="<%=asset.tokenCap%>" name="tokenCap" placeholder="Asset token Cap">
+                </div>
+            
+                <div class="form-group">
+                    <label for="tokenPrice">Token Price</label>
+                    <input class="form-control" id="tokenPrice" type="text" value="<%=asset.tokenPrice%>" name="tokenPrice" placeholder="Asset token price">
+                </div>
+                <div class="form-group">
+                    <label for="tokenRoiDescription">Describe Token Return on Investment?</label>
+                    <input class="form-control" id="tokenRoiDescription" value="<%=asset.tokenRoiDescription%>" type="text" name="tokenRoiDescription" placeholder="eg Rental income">
+                </div>
+                <div class="form-group">
+                    <label for="tokenRoiInterval">How oftern will this return occur?</label>
+                    <input class="form-control" id="tokenRoiInterval" value="<%=asset.tokenRoiInterval%>" type="text" name="tokenRoiInterval" placeholder="eg Montly">
+                </div>
+                <div class="form-group">
+                    <label for="tokenRoiAmount">How much will this Return on Investment be?</label>
+                    <input class="form-control" id="tokenRoiAmount" type="text" value="<%=asset.tokenRoiAmount%>" name="tokenRoiAmount" placeholder="$5000">
+                </div>
+                <div class="form-group">
+                    <label for="description">Caption Description</label>
+                    <input class="form-control" id="description" type="text" value="<%=asset.description%>" name="description" placeholder="A Student Accomodation Apartment">
+                </div>
+                <div class="form-group">
+                    <label for="detailedDescription">Detailed Description</label>
+                    <textarea rows="5" class="form-control" id="detailedDescription" name="asset[detailedDescription]" placeholder="Enter a detailed decription of the asset"><%=asset.detailedDescription%>
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="mainUrl">Image Url</label>
+                    <input class="form-control" id="mainUrl" value="<%=asset.gallery.mainUrl%>" type="text" name="mainUrl" placeholder="Profile Picture">
+                </div>
+                <div class="form-group">
+                    <button class="form-control btn-dark" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+</div>
+</section>
+
+<% include ../partials/footer %>
