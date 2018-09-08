@@ -35,6 +35,9 @@ var UserSchema = new mongoose.Schema({
     type: String,
     description: String,
     detailedDescription: String,
+    tokenRoiDescription: String,
+    tokenRoiAmount: Number,
+    tokenRoiInterval: String,
     location: {
         country: String,
         city: String,

@@ -24,6 +24,9 @@ var assetSchema = mongoose.Schema({
     tokenAvail: Number,
     token: String,
     tokenPrice: Number,
+    tokenRoiDescription: String,
+    tokenRoiAmount: Number,
+    tokenRoiInterval: String,
     transactions: [
         {
             type: mongoose.Schema.Types.ObjectId,

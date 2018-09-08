@@ -15,6 +15,7 @@
                     <img class="img-fluid" src="<%= asset.gallery.mainUrl %>" />
                     <h3 class="name"><%= asset.title%></h3>
                     <h5 class="description"><%= asset.description%></h5>
+                    <p> Earn up to $<%=asset.tokenRoiAmount%> <%=asset.tokenRoiInterval%></p>
                     <%if(asset.owners.length>0){%>
                         <p style="text-align:left; font-size:10;"><%=asset.owners.length%> Buyers</p>
                     <%}%>

@@ -26,6 +26,9 @@ tokenizationService.createAsset = function (req) {
         token: req.body.token, 
         tokenCap: req.body.tokenCap, 
         tokenPrice: req.body.tokenPrice,
+        tokenRoiDescription: req.body.tokenRoiDescription,
+        tokenRoiAmount: req.body.tokenRoiAmount,
+        tokenRoiInterval: req.body.tokenRoiInterval,
         wallets:[{
             token: req.body.token,
             balance: req.body.tokenCap,

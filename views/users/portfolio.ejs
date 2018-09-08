@@ -31,6 +31,13 @@
                                         <%=wallet.token%> tokens] of this asset. </td>
                             </tr>
                             <tr>
+                                <th scope="row">Current ROI:</th>
+                                <td>
+                                    $<%=parseFloat(Math.round((asset.tokenRoiAmount/asset.tokenCap) * wallet.balance)).toFixed(2)%> <%=asset.tokenRoiInterval%>
+                                    from <%=asset.tokenRoiDescription%>
+                                </td>
+                                </tr>
+                            <tr>
                                 <th scope="row">Asset availability:</th>
                                 <td>
                                     <%=parseFloat(Math.round((asset.tokenAvail/asset.tokenCap) * 100)).toFixed(2)%> % of tokens still Available

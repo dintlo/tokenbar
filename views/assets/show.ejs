@@ -32,14 +32,32 @@
                         </tr>
 
                         <tr>
+                        <th scope="row">ROI:</th>
+                        <td><%=asset.tokenRoiDescription%></td>
+                        </tr>
+
+                        <tr>
+                        <th scope="row">ROI Interval:</th>
+                        <td><%=asset.tokenRoiInterval%></td>
+                        </tr>
+
+                        <tr>
+                        <th scope="row">ROI Value:</th>
+                        <td>$<%=asset.tokenRoiAmount%></td>
+                        </tr>
+
+                        <tr>
                         <th scope="row">Available Tokens:</th>
                         <td><%=asset.tokenAvail%></td>
                         </tr>
+                        <tr>
+                        <th scope="row">ROI per token:</th>
+                        <td>$<%=parseFloat(Math.round(asset.tokenRoiAmount/asset.tokenCap)).toFixed(2)%> per token</td>
+                        </tr>
                     </tbody>
                 </table>
-               
-                
-                <h5 style="text-align:center;">Associated Wallets</h5>
+           
+                <h5 style="text-align:center;">Current Status</h5>
                 <% asset.wallets.forEach(function(wallet){ %>
                     
                     <table class="table table-striped">
@@ -53,6 +71,10 @@
                             <td><%=wallet.balance%></td>
                             </tr>
                             <tr>
+                            <th scope="row">Number of Buyers:</th>
+                            <td><%=asset.owners.length%></td>
+                            </tr>
+                            <tr>
                             <!-- <th scope="row">Public key:</th>
                             <td><%=wallet.publicKey%></td>
                             </tr>
@@ -64,7 +86,8 @@
                     </table>
                 <%});%>
                 <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="/transactions/new/<%=asset._id%>" class="btn btn-lg btn-primary">Purchase</a>
-                <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="#" class="btn btn-lg btn-dark">Monitor</a>
+
+                <a style="justify-content:center;width:100%; margin-bottom: 25px; text-align: center;" href="#" class="btn btn-lg btn-dark">Trade</a>
 
             </div>  
         </div>    
