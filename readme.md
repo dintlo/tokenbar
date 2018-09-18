@@ -25,6 +25,7 @@ Due to the fast changing blockchain protocol landscape, the goal of the project 
 - Ethereum
 - EOS
 - NEO
+- Cardano
 
 
 
