@@ -19,7 +19,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "keypair": "^1.0.1",
+    "keypair": "^1.0.4",
     "method-override": "^3.0.0",
     "mongoose": "^5.2.12",
     "node-forge": "^0.7.6",
